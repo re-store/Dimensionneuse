@@ -1,1 +1,24 @@
-This repo aims at creating a 3D scanning device
+# DIMENSIONNEUSE V1.0.0 _by WAO_ 
+Project under Creative Commons Licence CC-BY
+
+Short description about what it is : 
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas semper velit a nisl lacinia sodales. Integer sit amet tristique eros. Fusce maximus magna lorem, quis feugiat sapien ornare quis. Vestibulum viverra dapibus facilisis. Pellentesque tincidunt aliquam arcu, sed vulputate nisi interdum at. Nam porta tempor dignissim. Proin convallis rhoncus odio et scelerisque. Maecenas tempor nunc sed egestas sodales. 
+
+## THE BIG PICTURE
+### Why to use the Dimensionneuse ?
+### How it works
+
+## HOW TO SETUP 
+### What you need to buy and to install
+
+1. What you'll need 
+2. Node.js and Node Package Manager (NPM)
+3. PostgreSQL 
+4. MySQL
+
+### How to set-up everything 
+
+1. Pluging your sensors 
+2. Editing the code for your database
+
