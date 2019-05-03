@@ -16,6 +16,7 @@ var { Pool, Client } = require('pg');
 
 
 
+
 /////////////////////////////////////////////////////////
 //BOOT-UP//
 /////////////////////////////////////////////////////////
@@ -74,32 +75,35 @@ function auto() {
           console.log('\nBOARD READY');
 
           //THIS IS FOR JOHNNY FIVE TO RECOGNIZE A BUTTON ON PIN 2 (on an arduino)
-          var button = new five.Button(2);
+          var button = new five.Button("2");
 
           //THIS IS FOR JOHNNY FIVE TO RECOGNIZE A GP2Y0A710K0F SENSOR ON PIN A0 (on an arduino)
           var proximityX = new five.Proximity({
               //HERE, PUT THE SENSOR YOU ARE USING AND ITS PIN (see all supported sensors here: http://johnny-five.io/api/proximity/)
-              controller: "GP2Y0A710K0F",
-              pin: "A0"
+              controller: "HCSR04",
+              pin: "7"
           });
 
 
           var proximityY = new five.Proximity({
-              controller: "GP2Y0A710K0F",
-              pin: "A1"
+              controller: "HCSR04",
+              pin: "8"
           });
 
 
           var proximityZ = new five.Proximity({
-              controller: "GP2Y0A710K0F",
-              pin: "A2"
+              controller: "GP2Y0A21YK",
+              pin: "A0"
           });
 
+          var X = 248.1; //cm
+          var Y = 123.3; //cm
+          var Z = 28.6; //cm
 
           button.on("press",
               function () {
                   console.log("Measure...");
-                  startMeasuring([proximityX, proximityY, proximityZ]);
+                  startMeasuring([proximityX, proximityX, proximityX], [-X, -Y, -Z]);
               }
           );
       }
@@ -138,10 +142,10 @@ function manual() {
 
 
 const NB_MEASURE = 1000;  //Nb of measure to be done by each sensor
-const MASURE_INTERVAL = 2; // ^^^ Interval between each measure done by sensor ^^^
+const MEASURE_INTERVAL = 2; // ^^^ Interval between each measure done by sensor ^^^
 
 
-function startMeasuring(sensors) {
+function startMeasuring(sensors, offset) {
 
     //Compute the average for NB_MEASURE, for each measure during MEASURE_INTERVAL ms.
     var total = [0, 0, 0];
@@ -155,7 +159,8 @@ function startMeasuring(sensors) {
 
         if (nbMeasures == NB_MEASURE) {
             clearInterval(measure_interval);
-            endMeasure(divVector3(total, nbMeasures));
+            var measureDone = divVector3(total, nbMeasures);
+            measureDone = addVector3(measureDone, offset);
         }
     }, MEASURE_INTERVAL);
 }
