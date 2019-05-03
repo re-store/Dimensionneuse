@@ -103,7 +103,7 @@ function auto() {
           button.on("press",
               function () {
                   console.log("Measure...");
-                  startMeasuring([proximityX, proximityX, proximityX], [-X, -Y, -Z]);
+                  startMeasuring([proximityX, proximityY, proximityZ], [-X, -Y, -Z]);
               }
           );
       }
