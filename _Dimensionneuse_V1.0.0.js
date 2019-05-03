@@ -161,6 +161,7 @@ function startMeasuring(sensors, offset) {
             clearInterval(measure_interval);
             var measureDone = divVector3(total, nbMeasures);
             measureDone = addVector3(measureDone, offset);
+            endMeasure : endMeasure(measureDone);
         }
     }, MEASURE_INTERVAL);
 }
