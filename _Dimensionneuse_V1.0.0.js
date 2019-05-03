@@ -103,7 +103,7 @@ function auto() {
           button.on("press",
               function () {
                   console.log("Measure...");
-                  startMeasuring([proximityX, proximityY, proximityZ], [-X, -Y, -Z]);
+                  startMeasuring([proximityX, proximityY, proximityZ], [-X, -Y, -Z], material, volume, stock);
               }
           );
       }
@@ -145,7 +145,7 @@ const NB_MEASURE = 1000;  //Nb of measure to be done by each sensor
 const MEASURE_INTERVAL = 2; // ^^^ Interval between each measure done by sensor ^^^
 
 
-function startMeasuring(sensors, offset) {
+function startMeasuring(sensors, offset, material, volume, stock) {
 
     //Compute the average for NB_MEASURE, for each measure during MEASURE_INTERVAL ms.
     var total = [0, 0, 0];
@@ -167,7 +167,7 @@ function startMeasuring(sensors, offset) {
 }
 
 
-function endMeasure(measure) {
+function endMeasure(measure, material, volume, stock) {
     console.log("Measure :");
     console.log("\tx : " + measure[0] + " cm");
     console.log("\ty : " + measure[1] + " cm");
@@ -221,7 +221,7 @@ function uploadDb(measure, material, volume, stock) {
   // Connection (set it up with your own server)
   var client = new Client({
     user: 'dimn',
-    host: '192.168.1.107',
+    host: '192.168.1.39',
     database: 'dimn',
     password: 'Mvtmjs1n',
     port: 5432,
