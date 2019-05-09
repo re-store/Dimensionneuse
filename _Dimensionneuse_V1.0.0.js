@@ -74,14 +74,13 @@ function auto() {
       function () {
           console.log('\nBOARD READY');
 
-          //THIS IS FOR JOHNNY FIVE TO RECOGNIZE A BUTTON ON PIN 2 (on an arduino)
+          //THIS IS FOR JOHNNY FIVE TO RECOGNIZE A BUTTON ON PIN 2 (on an arduino); (You may change "2" to the pin of your choice)
           var button = new five.Button("2");
 
-          //THIS IS FOR JOHNNY FIVE TO RECOGNIZE A GP2Y0A710K0F SENSOR ON PIN A0 (on an arduino)
-          var proximityX = new five.Proximity({
+          //THIS IS FOR JOHNNY FIVE TO RECOGNIZE A GP2Y0A710K0F SENSOR ON PIN A0 (on an arduino);
               //HERE, PUT THE SENSOR YOU ARE USING AND ITS PIN (see all supported sensors here: http://johnny-five.io/api/proximity/)
-              controller: "HCSR04",
-              pin: "7"
+              controller: "HCSR04", //(You may change "HCSR04" to the sensor of your choice)
+              pin: "7" //(You may change "7" to the pin of your choice)
           });
 
 
@@ -103,7 +102,7 @@ function auto() {
           button.on("press",
               function () {
                   console.log("Measure...");
-                  startMeasuring([proximityX, proximityY, proximityZ], [-X, -Y, -Z], material, volume, stock);
+                  startMeasuring([proximityX, proximityX, proximityX], [-X, -Y, -Z]);
               }
           );
       }
@@ -145,7 +144,7 @@ const NB_MEASURE = 1000;  //Nb of measure to be done by each sensor
 const MEASURE_INTERVAL = 2; // ^^^ Interval between each measure done by sensor ^^^
 
 
-function startMeasuring(sensors, offset, material, volume, stock) {
+function startMeasuring(sensors, offset) {
 
     //Compute the average for NB_MEASURE, for each measure during MEASURE_INTERVAL ms.
     var total = [0, 0, 0];
@@ -167,7 +166,7 @@ function startMeasuring(sensors, offset, material, volume, stock) {
 }
 
 
-function endMeasure(measure, material, volume, stock) {
+function endMeasure(measure) {
     console.log("Measure :");
     console.log("\tx : " + measure[0] + " cm");
     console.log("\ty : " + measure[1] + " cm");
@@ -185,19 +184,19 @@ function endMeasure(measure, material, volume, stock) {
 
 // function uploadDb(measure, material, volume, stock) {
 //
-//     //Connection (set it up with your own server)
+//     //Connection (set it up with your own server; here we are on localhost; feel free to look at NPM MySQL documentation of you are looking for more connection options)
 //     var con = mysql.createConnection({
-//         host: "localhost",
-//         user: "Dimn",
-//         password: "Mvtmjs1n",
-//         database: "Dimn"
+//         host: "localhost", //The IP adress of your server OR link
+//         user: "Dimn", //You user name
+//         password: "aPassword", //The password to access your server
+//         database: "Dimn" //The name of the database on your server (mine is the same than the user id, but it ussually is different)
 //     });
 //
 //     //Insert data
 //     con.connect(function(err) {
 //       if (err) throw err;
 //       console.log("_____________________________________________________________\n");
-//       var sql = "INSERT INTO prototest (x, y, z, material, type, location) VALUES ?";
+//       var sql = "INSERT INTO prototest (x, y, z, material, type, location) VALUES ?"; //Here, it's 'INSERT INTO yourTable (columnName1, columnName2, columnName3...) VALUES ?";
 //       var values = [
 //         [measure[0], measure[1], measure[2], material, volume, stock]
 //       ];
@@ -220,17 +219,17 @@ function uploadDb(measure, material, volume, stock) {
 
   // Connection (set it up with your own server)
   var client = new Client({
-    user: 'dimn',
-    host: '192.168.1.39',
-    database: 'dimn',
-    password: 'Mvtmjs1n',
-    port: 5432,
+    user: 'dimn',  //You user name
+    host: '192.168.1.107', //The IP adress of your server OR link
+    database: 'dimn', //The name of the database on your server (mine is the same than the user id, but it ussually is different)
+    password: 'aPassword', //The password to access your server
+    port: 5432, //Your oppened port (it is usually 5433)
   })
 
   client.connect()
 
   //Insert data
-  var text = 'INSERT INTO prototest(x, y, z, material, type, location) VALUES($1, $2, $3, $4, $5, $6) RETURNING *'
+  var text = 'INSERT INTO prototest(x, y, z, material, type, location) VALUES($1, $2, $3, $4, $5, $6) RETURNING *' //Here, it's 'INSERT INTO yourTable (columnName1, columnName2, columnName3...) VALUES($1, $2, $3...) RETURNING *'
   var values = [measure[0], measure[1], measure[2], material, volume, stock]
 
   client.query(text, values, (err, res) => {
