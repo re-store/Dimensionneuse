@@ -57,8 +57,8 @@ function auto() {
   console.log('\t\n*** The scanner WILL BE used. ***\n');
   console.log('_____________________________________________________________\n');
 
-  var material = ask('\t\n What type of material is being scanned ? \n (Sapin = SAP, Pin = PIN, Bouleau = BOU \n Epicéa = EPI, Mélèze = MEL, Douglas = DOU \n Noyer = NOY, Chene = CHE, Frene = FRE \n Peuplier = PEU, Aulne = AUL, Teck = TEK \n Orme = ORM, Acacia = ACA, Acacia foncé = ACAF \n Wengé = WEN, Azobé = AZO)',
-                     ['SAP', 'PIN', 'BOU', 'EPI', 'MEL', 'DOU', 'NOY', 'CHE', 'FRE', 'PEU', 'AUL', 'TEK', 'ORM', 'ACA', 'ACAF', 'WEN', 'AZO']);
+  var material = ask('\t\n What type of material is being scanned ? \n (Fir = FIR, Pine = PIN, Birch = BIR \n Spruce = SPR, Larch = LAR, Douglas = DOU \n Walnut = WAL, Oak = OAK, Ash = ASH \n Poplar = POP, Alder = ALD, Teak = TEK \n Elm = ELM, Acacia = ACA, Dark acacia = DAC \n Wenge = WEN, Azobe = AZO)',
+                     ['FIR', 'PIN', 'BIR', 'SPR', 'LAR', 'DOU', 'WAL', 'OAK', 'ASH', 'POP', 'ALD', 'TEK', 'ELM', 'ACA', 'DAC', 'WEN', 'AZO']);
   var volume = ask('\t\n What type of volume is being scanned ? \n (Planche = PLAN, Plaque = PLAQ, Tasseau = TASS) ',
                      ['PLAN', 'PLAQ', 'TASS']);
   var stock = ask('\t\n Where is the material being scanned ? \n (At Re-Store = RS, at WoMa = WM)',
@@ -115,8 +115,8 @@ function manual() {
   console.log('\t\n*** The scanner WILL NOT BE used. ***\n');
   console.log('_____________________________________________________________');
 
-  var material = ask('\t\n What type of material is being scanned ? \n (Sapin = SAP, Pin = PIN, Bouleau = BOU \n Epicéa = EPI, Mélèze = MEL, Douglas = DOU \n Noyer = NOY, Chene = CHE, Frene = FRE \n Peuplier = PEU, Aulne = AUL, Teck = TEK \n Orme = ORM, Acacia = ACA, Acacia foncé = ACAF \n Wengé = WEN, Azobé = AZO)',
-                     ['SAP', 'PIN', 'BOU', 'EPI', 'MEL', 'DOU', 'NOY', 'CHE', 'FRE', 'PEU', 'AUL', 'TEK', 'ORM', 'ACA', 'ACAF', 'WEN', 'AZO']);
+  var material = ask('\t\n What type of material is being scanned ? \n (Fir = FIR, Pine = PIN, Birch = BIR \n Spruce = SPR, Larch = LAR, Douglas = DOU \n Walnut = WAL, Oak = OAK, Ash = ASH \n Poplar = POP, Alder = ALD, Teak = TEK \n Elm = ELM, Acacia = ACA, Dark acacia = DAC \n Wenge = WEN, Azobe = AZO)',
+                     ['FIR', 'PIN', 'BIR', 'SPR', 'LAR', 'DOU', 'WAL', 'OAK', 'ASH', 'POP', 'ALD', 'TEK', 'ELM', 'ACA', 'DAC', 'WEN', 'AZO']);
   var volume = ask('\t\n What type of volume is being scanned ? \n (Planche = PLAN, Plaque = PLAQ, Tasseau = TASS) ',
                      ['PLAN', 'PLAQ', 'TASS']);
   var stock = ask('\t\n Where is the material being scanned ? \n (At Re-Store = RS, at WoMa = WM)',
