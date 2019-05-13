@@ -1,23 +1,16 @@
-# DIMENSIONNEUSE V1.0.0 _by WAO_ 
+========DIMENSIONNEUSE V1.0.0 _by WAO ========
+
 Project under Creative Commons Licence CC-BY
 
-Short description about what it is : 
-The Dimensionneuse is a device that aims at acquiring an object's dimensions in order to categorize random materials. It is being developped by WAO and WOMA. 
 
-## THE BIG PICTURE
-### Why to use the Dimensionneuse ?
-### How it works
+_________WHAT IS IT ? _________
 
-## HOW TO SETUP 
-### What you need to buy and to install
+The Dimensionneuse is a device that aims at acquiring an object's dimensions in order to categorize random materials. 
+It is being developped by WAO and WOMA. 
 
-1. What you'll need 
-2. Node.js and Node Package Manager (NPM)
-3. PostgreSQL 
-4. MySQL
+The idea behind the Dimensionneuse is to create a device that would allow us to reference wasted materials. 
+Our goal is to encourage reusability of materials as far as architecture, design, and Building Information Modeling (BIM) are concerned.
 
-### How to set-up everything 
 
-1. Pluging your sensors 
-2. Editing the code for your database
-
+/!\ GO CHECK THE WIKI HERE /!\ 
+https://github.com/Re-Store/Dimensionneuse/wiki 
