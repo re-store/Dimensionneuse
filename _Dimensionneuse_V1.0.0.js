@@ -59,8 +59,8 @@ function auto() {
 
   var material = ask('\t\n What type of material is being scanned ? \n (Fir = FIR, Pine = PIN, Birch = BIR \n Spruce = SPR, Larch = LAR, Douglas = DOU \n Walnut = WAL, Oak = OAK, Ash = ASH \n Poplar = POP, Alder = ALD, Teak = TEK \n Elm = ELM, Acacia = ACA, Dark acacia = DAC \n Wenge = WEN, Azobe = AZO)',
                      ['FIR', 'PIN', 'BIR', 'SPR', 'LAR', 'DOU', 'WAL', 'OAK', 'ASH', 'POP', 'ALD', 'TEK', 'ELM', 'ACA', 'DAC', 'WEN', 'AZO']);
-  var volume = ask('\t\n What type of volume is being scanned ? \n (Planche = PLAN, Plaque = PLAQ, Tasseau = TASS) ',
-                     ['PLAN', 'PLAQ', 'TASS']);
+  var volume = ask('\t\n What type of volume is being scanned ? \n (Plank = PLAN, Plate = PLAT, Cleat = CLEAT) ',
+                     ['PLAN', 'PLAT', 'CLEAT']);
   var stock = ask('\t\n Where is the material being scanned ? \n (At Re-Store = RS, at WoMa = WM)',
                      ['RS', 'WM']);
 
@@ -117,8 +117,8 @@ function manual() {
 
   var material = ask('\t\n What type of material is being scanned ? \n (Fir = FIR, Pine = PIN, Birch = BIR \n Spruce = SPR, Larch = LAR, Douglas = DOU \n Walnut = WAL, Oak = OAK, Ash = ASH \n Poplar = POP, Alder = ALD, Teak = TEK \n Elm = ELM, Acacia = ACA, Dark acacia = DAC \n Wenge = WEN, Azobe = AZO)',
                      ['FIR', 'PIN', 'BIR', 'SPR', 'LAR', 'DOU', 'WAL', 'OAK', 'ASH', 'POP', 'ALD', 'TEK', 'ELM', 'ACA', 'DAC', 'WEN', 'AZO']);
-  var volume = ask('\t\n What type of volume is being scanned ? \n (Planche = PLAN, Plaque = PLAQ, Tasseau = TASS) ',
-                     ['PLAN', 'PLAQ', 'TASS']);
+  var volume = ask('\t\n What type of volume is being scanned ? \n (Plank = PLAN, Plate = PLAT, Cleat = CLEAT) ',
+                     ['PLAN', 'PLAT', 'CLEAT']);
   var stock = ask('\t\n Where is the material being scanned ? \n (At Re-Store = RS, at WoMa = WM)',
                      ['RS', 'WM']);
 
