@@ -1,0 +1,13 @@
+{
+    "X": 248.1,
+    "Y": 123.3,
+    "Z": 28.6,
+    "askForMode": false,
+    "askForMaterial": false,
+    "askForType": false,
+    "askForLocation": false,
+    "defaultMode": "SCANNER",
+    "defaultMaterial": "OAK",
+    "defaultType": "PLAN",
+    "defaultLocation": "RS"
+}

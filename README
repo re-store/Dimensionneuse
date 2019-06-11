@@ -1,9 +1,8 @@
-========DIMENSIONNEUSE V1.0.0 _by WAO ========
+# Dimensionneuse
 
 Project under Creative Commons Licence CC-BY
 
-
-_________WHAT IS IT ? _________
+## What is it ?
 
 The Dimensionneuse is a device that aims at acquiring an object's dimensions in order to categorize random materials. 
 It is being developped by WAO and WOMA. 
@@ -11,6 +10,5 @@ It is being developped by WAO and WOMA.
 The idea behind the Dimensionneuse is to create a device that would allow us to reference wasted materials. 
 Our goal is to encourage reusability of materials as far as architecture, design, and Building Information Modeling (BIM) are concerned.
 
-
 /!\ GO CHECK THE WIKI HERE /!\ 
-https://github.com/Re-Store/Dimensionneuse/wiki 
+(Wiki)[https://github.com/Re-Store/Dimensionneuse/wiki]
