@@ -1,29 +1,56 @@
 var config = require('./../config/config.json');
+var materials = require('./../config/materials.json');
+var volumes = require('./../config/volumes.json');
 var { question } = require("readline-sync");
 
-exports.mode = function() {
-    choice = "";
-    if (config.askForMode) {
+exports.mode = function () {
+	choice = "";
+	if (config.askForMode) {
 		choice = ask('Would you like to use the scanner mode ? (SCANNER / MANUAL) ', ['SCANNER', 'MANUAL']);
 	} else {
 		choice = config.defaultMode
-    }
-    return choice;
+	}
+	return choice;
 }
 
-exports.material = function() {
-    ask('\t\n What type of material is being scanned ? \n (Unknown = UKN, Fir = FIR, Pine = PIN, Birch = BIR \n Spruce = SPR, Larch = LAR, Douglas = DOU \n Walnut = WAL, Oak = OAK, Ash = ASH \n Poplar = POP, Alder = ALD, Teak = TEK \n Elm = ELM, Acacia = ACA, Dark acacia = DAC \n Wenge = WEN, Azobe = AZO)',
-		['UKN', 'FIR', 'PIN', 'BIR', 'SPR', 'LAR', 'DOU', 'WAL', 'OAK', 'ASH', 'POP', 'ALD', 'TEK', 'ELM', 'ACA', 'DAC', 'WEN', 'AZO']);
+exports.material = function () {
+	choice = "";
+	if (config.askForMaterial) {
+		var prompt = "\t\n What type of material is being scanned ? (";
+		var acceptedAnswers = []
+		for (var key in materials) {
+			console.log(key);
+			prompt += materials[key].name + ": " + materials[key].code + ", ";
+			acceptedAnswers.push(materials[key].code);
+		}
+		prompt += ") ";
+		choice = ask(prompt, acceptedAnswers);
+	} else {
+		choice = config.defaultMaterial
+	}
+	return choice;
 }
 
-exports.volume = function() {
-    ask('\t\n What type of volume is being scanned ? \n (Plank = PLAN, Plate = PLAT, Cleat = CLEAT, Undefined = UNDEF) ',
-		['PLAN', 'PLAT', 'CLEAT', 'UNDEF']);
+exports.volume = function () {
+	choice = "";
+	if (config.askForVolume) {
+		var prompt = "\t\n What type of volume is being scanned ? (";
+		var acceptedAnswers = []
+		for (var key in volumes) {
+			console.log(key);
+			prompt += volumes[key].name + ": " + volumes[key].code + ", ";
+			acceptedAnswers.push(volumes[key].code);
+		}
+		prompt += ") ";
+		choice = ask(prompt, acceptedAnswers);
+	} else {
+		choice = config.defaultVolume
+	}
+	return choice;
 }
 
-exports.stock = function() {
-    ask('\t\n Where is the material being scanned ? \n (At Re-Store = RS, at WoMa = WM)',
-		['RS', 'WM']);
+exports.location = function () {
+	return config.defaultLocation
 }
 
 function ask(prompt, accepted) {

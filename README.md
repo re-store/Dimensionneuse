@@ -18,7 +18,7 @@ Clone this repo and install the dependencies :
 npm install
 ```
 
-Then configure the hardware using (the wiki)[https://github.com/Re-Store/Dimensionneuse/wiki], and launch the dimensionneuse with :
+Then configure the hardware using [the wiki](https://github.com/Re-Store/Dimensionneuse/wiki), and launch the dimensionneuse with :
 
 ```
 node main.js

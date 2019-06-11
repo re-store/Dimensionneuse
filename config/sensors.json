@@ -1,0 +1,14 @@
+{
+    "sensorX": {
+        "controller": "HCSR04",
+        "pin": "7"
+    },
+    "sensorY": {
+        "controller": "HCSR04",
+        "pin": "8"
+    },
+    "sensorZ": {
+        "controller": "GP2Y0A21YK",
+        "pin": "A0"
+    }
+}

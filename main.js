@@ -4,8 +4,7 @@ var measure = require('./js/measure.js');
 var input = require('./js/input.js');
 
 var config = require('./config/config.json');
-var materials = require('./config/materials.json');
-var types = require('./config/types.json');
+var sensorsInfo = require('./config/sensors.json');
 
 var userMode = '';
 var sensors = [];
@@ -42,12 +41,15 @@ function main() {
  */
 function auto() {
 
-	console.log('\t\n*** The scanner WILL BE used. ***\n');
+	console.log('\n\t*** The scanner WILL BE used. ***\n');
 	console.log('_____________________________________________________________\n');
 
 	var material = input.material();
 	var volume = input.volume();
-	var stock = input.stock();
+	var location = input.location();
+	console.log('\tMaterial: ' + material);
+	console.log('\tVolume: ' + volume);
+	console.log('\tLocation: ' + location);
 
 	console.log('_____________________________________________________________\n');
 
@@ -57,54 +59,42 @@ function auto() {
 
 	board.on('ready',
 		function () {
+			// Button & sensors init
+			for (var sensor in sensorsInfo) {
+				sensors.push(new Proximity({
+					controller: sensorsInfo[sensor].controller,
+					pin: sensorsInfo[sensor].pin
+				}));
+			}
+			
+			var button = new Button(config.buttonPin);
+			button.on("press", buttonPress);
+
 			console.log('\nBOARD READY');
-
-			//THIS IS FOR JOHNNY FIVE TO RECOGNIZE A BUTTON ON PIN 2 (on an arduino); (You may change "2" to the pin of your choice)
-			var button = new Button("2");
-
-			//THIS IS FOR JOHNNY FIVE TO RECOGNIZE A GP2Y0A710K0F SENSOR ON PIN A0 (on an arduino);
-			//HERE, PUT THE SENSOR YOU ARE USING AND ITS PIN (see all supported sensors here: http://johnny-five.io/api/proximity/)
-			sensors.push(new Proximity({
-				controller: "HCSR04", //(You may change "HCSR04" to the sensor of your choice)
-				pin: "7" //(You may change "7" to the pin of your choice)
-			}));
-
-
-			sensors.push(new Proximity({
-				controller: "HCSR04",
-				pin: "8"
-			}));
-
-
-			sensors.push(new Proximity({
-				controller: "GP2Y0A21YK",
-				pin: "A0"
-			}));
-
-			button.on("press",
-				function () {
-					console.log("Measure...");
-					measure.start(sensors).then(function (value) {
-						console.log("Fin de la mesure. résultat " + value);
-
-					});
-				}
-			);
 		}
 	);
 }
 
+/**
+ * Called when the button is clicked.
+ */
+function buttonPress() {
+	console.log("Measure...");
+	measure.start(sensors).then(function (value) {
+		console.log("\t=>" + value[0]);
+	});
+}
 
 //THIS IS THE MANUAL MODE, ENABLING YOU TO MEASURE AN OBJECT MANUALLY WITH BETTER PRECISION
 function manual() {
-	console.log('\t\n*** The scanner WILL NOT BE used. ***\n');
+	console.log('\n\t*** The scanner WILL NOT BE used. ***\n');
 	console.log('_____________________________________________________________');
 
-	var material = ask('\t\n What type of material is being scanned ? \n (Unknown = UKN, Fir = FIR, Pine = PIN, Birch = BIR \n Spruce = SPR, Larch = LAR, Douglas = DOU \n Walnut = WAL, Oak = OAK, Ash = ASH \n Poplar = POP, Alder = ALD, Teak = TEK \n Elm = ELM, Acacia = ACA, Dark acacia = DAC \n Wenge = WEN, Azobe = AZO)',
+	var material = ask('\n\t What type of material is being scanned ? \n (Unknown = UKN, Fir = FIR, Pine = PIN, Birch = BIR \n Spruce = SPR, Larch = LAR, Douglas = DOU \n Walnut = WAL, Oak = OAK, Ash = ASH \n Poplar = POP, Alder = ALD, Teak = TEK \n Elm = ELM, Acacia = ACA, Dark acacia = DAC \n Wenge = WEN, Azobe = AZO)',
 		['UKN', 'FIR', 'PIN', 'BIR', 'SPR', 'LAR', 'DOU', 'WAL', 'OAK', 'ASH', 'POP', 'ALD', 'TEK', 'ELM', 'ACA', 'DAC', 'WEN', 'AZO']);
-	var volume = ask('\t\n What type of volume is being scanned ? \n (Plank = PLAN, Plate = PLAT, Cleat = CLEAT, Undefined = UNDEF) ',
+	var volume = ask('\n\t What type of volume is being scanned ? \n (Plank = PLAN, Plate = PLAT, Cleat = CLEAT, Undefined = UNDEF) ',
 		['PLAN', 'PLAT', 'CLEAT', 'UNDEF']);
-	var stock = ask('\t\n Where is the material being scanned ? \n (At Re-Store = RS, at WoMa = WM)',
+	var location = ask('\n\t Where is the material being scanned ? \n (At Re-Store = RS, at WoMa = WM)',
 		['RS', 'WM']);
 
 	console.log('_____________________________________________________________\n');
@@ -115,7 +105,7 @@ function manual() {
 
 	console.log('_____________________________________________________________\n');
 
-	uploadDb([xDim, yDim, zDim], material, volume, stock);
+	uploadDb([xDim, yDim, zDim], material, volume, location);
 }
 
 

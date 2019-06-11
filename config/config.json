@@ -4,10 +4,13 @@
     "Z": 28.6,
     "askForMode": false,
     "askForMaterial": false,
-    "askForType": false,
+    "askForVolume": false,
     "askForLocation": false,
     "defaultMode": "SCANNER",
     "defaultMaterial": "OAK",
-    "defaultType": "PLAN",
-    "defaultLocation": "RS"
+    "defaultVolume": "PLAN",
+    "defaultLocation": "RS",
+    "measuresNb": 50,
+    "measureInterval": 400,
+    "buttonPin": "2"
 }
