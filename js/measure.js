@@ -14,13 +14,12 @@ exports.start = function(sensors) {
         var measure_interval = setInterval(() => {
             var measure = [sensors[0].cm, sensors[1].cm, sensors[2].cm];
             total = addVector3(total, measure);
-    
+            
             nbMeasures++;
-    
+
             if (nbMeasures == config.measuresNb) {
                 clearInterval(measure_interval);
                 var measureDone = divVector3(total, nbMeasures);
-                // measureDone = subVector3(table, measureDone);
                 resolve(measureDone);
             }
         }, config.measureInterval);

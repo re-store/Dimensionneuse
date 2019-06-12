@@ -1,5 +1,8 @@
 // Customize this file to use your preferred db
 
-exports.uploadDb = function(measure, material, volume, stock) {
-    console.log(measure);
+exports.upload = function(measure, material, volume, stock) {
+    return new Promise(function(resolve, _) {
+        console.log(measure);
+        resolve();
+    });
 }
