@@ -1,56 +1,4 @@
 {
-    "fir": {
-        "name": "Fir",
-        "code": "FIR"
-    },
-    "pine": {
-        "name": "Pine",
-        "code": "PIN"
-    },
-    "birch": {
-        "name": "Birch",
-        "code": "BIR"
-    },
-    "spruce": {
-        "name": "Spruce",
-        "code": "SPR"
-    },
-    "larch": {
-        "name": "Larch",
-        "code": "LAR"
-    },
-    "douglas": {
-        "name": "Douglas",
-        "code": "DOU"
-    },
-    "walnut": {
-        "name": "Walnut",
-        "code" : "WAL"
-    },
-    "oak": {
-        "name": "Oak",
-        "code": "OAK"
-    },
-    "ash": {
-        "name": "Ash",
-        "code": "ASH"
-    },
-    "poplar": {
-        "name": "Poplar",
-        "code": "POP"
-    },
-    "alder": {
-        "name": "Alder",
-        "code": "ALD"
-    },
-    "teak": {
-        "name": "Teak",
-        "code": "TEK"
-    },
-    "elm": {
-        "name": "Elm",
-        "code": "ELM"
-    },
     "acacia": {
         "name": "Acacia",
         "code": "ACA"
@@ -59,13 +7,77 @@
         "name": "Dark acacia",
         "code": "DAC"
     },
-    "wenge": {
-        "name": "Wenge",
-        "code": "WEN"
+    "alder": {
+        "name": "Alder",
+        "code": "ALD"
+    },
+    "ash": {
+        "name": "Ash",
+        "code": "ASH"
     },
     "azobe": {
         "name": "Azobe",
         "code": "AZO"
+    },
+    "birch": {
+        "name": "Birch",
+        "code": "BIR"
+    },
+    "chp": {
+        "name": "Chipboard",
+        "code": "CHP"
+    },
+    "douglas": {
+        "name": "Douglas",
+        "code": "DOU"
+    },
+    "elm": {
+        "name": "Elm",
+        "code": "ELM"
+    },
+    "fir": {
+        "name": "Fir",
+        "code": "FIR"
+    },
+    "larch": {
+        "name": "Larch",
+        "code": "LAR"
+    },
+    "mdf": {
+        "name": "MDF",
+        "code": "MDF"
+    },
+    "oak": {
+        "name": "Oak",
+        "code": "OAK"
+    },
+    "pine": {
+        "name": "Pine",
+        "code": "PIN"
+    },
+    "ply": {
+        "name": "Plywood",
+        "code": "PLY"
+    },
+    "poplar": {
+        "name": "Poplar",
+        "code": "POP"
+    },
+    "spruce": {
+        "name": "Spruce",
+        "code": "SPR"
+    },
+    "teak": {
+        "name": "Teak",
+        "code": "TEK"
+    },
+    "walnut": {
+        "name": "Walnut",
+        "code": "WAL"
+    },
+    "wenge": {
+        "name": "Wenge",
+        "code": "WEN"
     },
     "unknown": {
         "name": "Unknown",

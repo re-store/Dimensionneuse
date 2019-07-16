@@ -1,4 +1,9 @@
 {
+    "sensorZ": {
+        "controller": "GP2Y0A21YK",
+        "pin": "A0",
+        "offset": 0
+    },
     "sensorX": {
         "controller": "HCSR04",
         "pin": "7",
@@ -6,12 +11,7 @@
     },
     "sensorY": {
         "controller": "HCSR04",
-        "pin": "8",
-        "offset": 0
-    },
-    "sensorZ": {
-        "controller": "GP2Y0A21YK",
-        "pin": "A0",
+        "pin": "4",
         "offset": 0
     }
 }

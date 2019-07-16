@@ -53,8 +53,7 @@ function auto() {
 		boardInit();
 	} else {
 		canClick = true;
-		console.log("Press the button to measure.");
-		
+		waitForInput();
 	}
 }
 
@@ -110,8 +109,10 @@ function boardInit() {
 			var button = new Button(config.buttonPin);
 			button.on("press", buttonPress);
 
-			console.log('The board is ready.\nPress the button to measure.\n');
+			console.log('The board is ready.');
 			isBoardInit = true;
+			canClick = true;
+			waitForInput();
 		}
 	);
 }
@@ -120,6 +121,22 @@ function boardInit() {
  * Called when the button is clicked.
  */
 function buttonPress() {
+	
+	if (canClick) {
+		canClick = false;
+		console.log("Measuring...");
+	
+		// Start measuring
+		measure
+			.start(sensors)
+			.then(function (value) {
+				afterMeasure(value);
+			});
+	}
+}
+
+function waitForInput() {
+	input.measure();
 	if (canClick) {
 		canClick = false;
 		console.log("Measuring...");

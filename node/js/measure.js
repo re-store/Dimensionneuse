@@ -13,8 +13,11 @@ exports.start = function(sensors) {
     return new Promise(function(resolve, _) {
         var measure_interval = setInterval(() => {
             var measure = [sensors[0].cm, sensors[1].cm, sensors[2].cm];
-            total = addVector3(total, measure);
             
+            total = addVector3(total, measure);
+            console.log(measure);
+            
+
             nbMeasures++;
 
             if (nbMeasures == config.measuresNb) {

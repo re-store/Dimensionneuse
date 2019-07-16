@@ -4,20 +4,20 @@ var volumes = require('./../config/volumes.json');
 var { question } = require("readline-sync");
 
 exports.mode = function () {
-    choice = "";
+    var choice = "";
     if (config.askForMode) {
         choice = ask('Would you like to use the scanner mode ? (SCANNER / MANUAL) ', ['SCANNER', 'MANUAL']);
     } else {
-        choice = config.defaultMode
+        choice = config.defaultMode;
     }
     return choice;
 }
 
 exports.material = function () {
-    choice = "";
+    var choice = "";
     if (config.askForMaterial) {
         var prompt = "What type of material is being scanned ? (";
-        var acceptedAnswers = []
+        var acceptedAnswers = [];
         for (var key in materials) {
             prompt += materials[key].name + ": " + materials[key].code + ", ";
             acceptedAnswers.push(materials[key].code);
@@ -25,16 +25,16 @@ exports.material = function () {
         prompt += ") ";
         choice = ask(prompt, acceptedAnswers);
     } else {
-        choice = config.defaultMaterial
+        choice = config.defaultMaterial;
     }
     return choice;
 }
 
 exports.volume = function () {
-    choice = "";
+    var choice = "";
     if (config.askForVolume) {
         var prompt = "What type of volume is being scanned ? (";
-        var acceptedAnswers = []
+        var acceptedAnswers = [];
         for (var key in volumes) {
             prompt += volumes[key].name + ": " + volumes[key].code + ", ";
             acceptedAnswers.push(volumes[key].code);
@@ -42,13 +42,13 @@ exports.volume = function () {
         prompt += ") ";
         choice = ask(prompt, acceptedAnswers);
     } else {
-        choice = config.defaultVolume
+        choice = config.defaultVolume;
     }
     return choice;
 }
 
 exports.location = function () {
-    return config.defaultLocation
+    return config.defaultLocation;
 }
 
 exports.size = function() {
@@ -59,14 +59,18 @@ exports.size = function() {
 }
 
 exports.continue = function () {
-    choice = "";
+    var choice = "";
     if (config.askToContinue) {
         var prompt = "Would you like to do an other measure ? (Y / N)";
         choice = ask(prompt, ["Y", "N"]);
     } else {
-        choice = config.defaultContinue
+        choice = config.defaultContinue;
     }
     return choice;
+}
+
+exports.measure = function () {
+    question("Press ENTER to measure\n");
 }
 
 function ask(prompt, accepted) {
@@ -74,9 +78,9 @@ function ask(prompt, accepted) {
     do {
         input = question("\n" + prompt + "\n  >> ");
         if (!accepted.includes(input))
-            console.log('  ...I did not catch that :/')
+            console.log('  ...I did not catch that :/');
     } while (!accepted.includes(input));
-    return input
+    return input;
 }
 
 function askNumber(prompt) {
@@ -84,7 +88,7 @@ function askNumber(prompt) {
     do {
         input = question("\n" + prompt + "\n  >> ");
         if (isNaN(parseFloat(input)))
-            console.log('  ...I did not catch that :/')
+            console.log('  ...I did not catch that :/');
     } while (isNaN(parseFloat(input)));
-    return parseFloat(input)
+    return parseFloat(input);
 }

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>La Dimensionneuse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="master.min.css">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div id="title">La Dimensionneuse</div>
+        <div id="icons">
+            <a href="https://restore.woma.fr/"><i class="material-icons">home</i></a>
+            <a href=""><i class="material-icons">info</i></a>
+            <a href="https://github.com/Re-Store/Dimensionneuse"><i class="material-icons">code</i></a>
+        </div>
+    </header>
+
+    <div id="container">
+        <div class="card">
+            <div>Re-Store</div>
+            <div>Matériau: <select name="materiau" id="materiau">
+                    <option selected="true" disabled>---</option>
+                </select></div>
+            <div>Volume: <select name="volume" id="volume">
+                    <option selected="true" disabled>---</option>
+                </select></div>
+
+            <div class="separator"></div>
+
+            <div>X: <input type="number" class="inputMesure" name="x" id="x"> ± <input type="number"
+                    class="inputPrecision" name="px" id="px" value="10"></div>
+            <div>Y: <input type="number" class="inputMesure" name="y" id="y"> ± <input type="number"
+                    class="inputPrecision" name="py" id="py" value="10"></div>
+            <div>Z: <input type="number" class="inputMesure" name="z" id="z"> ± <input type="number"
+                    class="inputPrecision" name="pz" id="pz" value="1"></div>
+            <div> (fix X <input type="checkbox" name="cx" id="cx">, Y <input type="checkbox" name="cy" id="cy">, Z
+                <input type="checkbox" name="cz" id="cz">)</div>
+            <div><button id="mesure"><i class="material-icons">search</i> MEASURE</button></div>
+
+            <div class="separator"></div>
+
+            <div><button id="upload"><i class="material-icons">publish</i> UPLOAD</button></div>
+        </div>
+
+        <textarea name="console" id="console" cols="35" rows="20" readonly>Upload successful (code DIM-001)
+
+Upload successful (code DIM-002)
+        </textarea>
+
+    </div>
+
+</body>
+
+<script>
+    function populateSelectWithJSON(id, url) {
+        let select = $(document.getElementById(id));
+        $.getJSON(url, function (data) {
+            $.each(data, function (key, entry) {
+                select.append($('<option></option>').attr('value', entry.code).text(entry.name));
+            })
+        });
+    }
+
+    populateSelectWithJSON("materiau", "../config/materials.json");
+    populateSelectWithJSON("volume", "../config/volumes.json");
+</script>
+
+</html>
