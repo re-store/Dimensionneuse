@@ -22,8 +22,14 @@
 
     <div id="container">
         <div class="card">
+
+            <div><button id="calib" onclick="calibrate()"><i class="material-icons">settings</i> CALIBRATE</button>
+            </div>
+
+            <div class="separator"></div>
+
             <div>Re-Store</div>
-            <div>Matériau: <select name="materiau" id="materiau">
+            <div>Material: <select name="materiau" id="materiau">
                     <option selected="true" disabled>---</option>
                 </select></div>
             <div>Volume: <select name="volume" id="volume">
@@ -38,18 +44,17 @@
                     class="inputPrecision" name="py" id="py" value="10"></div>
             <div>Z: <input type="number" class="inputMesure" name="z" id="z"> ± <input type="number"
                     class="inputPrecision" name="pz" id="pz" value="1"></div>
-            <div> (fix X <input type="checkbox" name="cx" id="cx">, Y <input type="checkbox" name="cy" id="cy">, Z
-                <input type="checkbox" name="cz" id="cz">)</div>
-            <div><button id="mesure"><i class="material-icons">search</i> MEASURE</button></div>
+            <div> (measure X <input type="checkbox" name="cx" id="cx" checked>, Y <input type="checkbox" name="cy"
+                    id="cy" checked>, Z
+                <input type="checkbox" name="cz" id="cz" checked>)</div>
+            <div><button id="mesure" onclick="mesure()"><i class="material-icons">search</i> MEASURE</button></div>
 
             <div class="separator"></div>
 
-            <div><button id="upload"><i class="material-icons">publish</i> UPLOAD</button></div>
+            <div><button id="upload" onclick="upload()"><i class="material-icons">publish</i> UPLOAD</button></div>
         </div>
 
-        <textarea name="console" id="console" cols="35" rows="20" readonly>Upload successful (code DIM-001)
-
-Upload successful (code DIM-002)
+        <textarea name="console" id="console" cols="35" rows="20" readonly>
         </textarea>
 
     </div>
@@ -57,8 +62,13 @@ Upload successful (code DIM-002)
 </body>
 
 <script>
+
+    function outputToConsole(text) {
+        $("#console").val(text + "\n\n" + $("#console").val());
+    }
+
     function populateSelectWithJSON(id, url) {
-        let select = $(document.getElementById(id));
+        let select = $("#" + id);
         $.getJSON(url, function (data) {
             $.each(data, function (key, entry) {
                 select.append($('<option></option>').attr('value', entry.code).text(entry.name));
@@ -66,8 +76,42 @@ Upload successful (code DIM-002)
         });
     }
 
-    populateSelectWithJSON("materiau", "../config/materials.json");
-    populateSelectWithJSON("volume", "../config/volumes.json");
+    populateSelectWithJSON("materiau", "config/materials.json");
+    populateSelectWithJSON("volume", "config/volumes.json");
+
+    function calibrate() {
+        $.post(
+            "calibrate",
+            {},
+            function (data) {
+                outputToConsole(data);
+            }
+        );
+    }
+
+    function mesure() {
+        $.get(
+            "measure",
+            { x: $("#cx").val(), y: $("#cy").val(), z: $("#cz").val() },
+            function (data) {
+                outputToConsole(data);
+            }
+        );
+    }
+
+    function upload() {
+        $.post(
+            "upload",
+            {
+                x: $("#x").val(), y: $("#y").val(), z: $("#z").val(),
+                px: $("#px").val(), py: $("#py").val(), pz: $("#pz").val(),
+                mat: $("#materiau").val(), vol: $("#volume").val()
+            },
+            function (data) {
+                outputToConsole(data);
+            }
+        );
+    }
 </script>
 
 </html>

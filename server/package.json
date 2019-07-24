@@ -1,0 +1,18 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass --watch public/master.scss -o public/master.css"
+  },
+  "author": "",
+  "license": "CC-BY-4.0",
+  "dependencies": {
+    "express": "^4.17.1",
+    "ip": "^1.1.5",
+    "jquery": "^3.4.1",
+    "material-icons": "^0.3.1"
+  }
+}

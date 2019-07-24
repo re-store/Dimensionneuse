@@ -1,11 +1,9 @@
 # Dimensionneuse
 
-Project under Creative Commons Licence CC-BY
-
 ## What is it ?
 
-The Dimensionneuse is a device that aims at acquiring an object's dimensions in order to categorize random materials. 
-It is being developped by WAO and WOMA. 
+The Dimensionneuse is a device which can be used to measure and categorize random materials. 
+It is being developped by WAO and WoMa. 
 
 The idea behind the Dimensionneuse is to create a device that would allow us to reference wasted materials. 
 Our goal is to encourage reusability of materials as far as architecture, design, and Building Information Modeling (BIM) are concerned.
@@ -15,6 +13,7 @@ Our goal is to encourage reusability of materials as far as architecture, design
 Clone this repo and install the dependencies :
 
 ```
+cd website
 npm install
 ```
 
@@ -23,3 +22,7 @@ Then configure the hardware using [the wiki](https://github.com/Re-Store/Dimensi
 ```
 node main.js
 ```
+
+## License
+
+Project under Creative Commons Licence CC-BY 4.0
