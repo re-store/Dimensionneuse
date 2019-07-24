@@ -1,0 +1,18 @@
+{
+    "plank": {
+        "name": "Plank",
+        "code": "PLK"
+    },
+    "plate": {
+        "name": "Plate",
+        "code": "PLT"
+    },
+    "cleat": {
+        "name": "Cleat",
+        "code": "CLT"
+    },
+    "unknown": {
+        "name": "Unknown",
+        "code": "UKN"
+    }
+}

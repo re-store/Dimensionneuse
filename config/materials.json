@@ -1,0 +1,86 @@
+{
+    "acacia": {
+        "name": "Acacia",
+        "code": "ACA"
+    },
+    "dark_acacia": {
+        "name": "Dark acacia",
+        "code": "DAC"
+    },
+    "alder": {
+        "name": "Alder",
+        "code": "ALD"
+    },
+    "ash": {
+        "name": "Ash",
+        "code": "ASH"
+    },
+    "azobe": {
+        "name": "Azobe",
+        "code": "AZO"
+    },
+    "birch": {
+        "name": "Birch",
+        "code": "BIR"
+    },
+    "chp": {
+        "name": "Chipboard",
+        "code": "CHP"
+    },
+    "douglas": {
+        "name": "Douglas",
+        "code": "DOU"
+    },
+    "elm": {
+        "name": "Elm",
+        "code": "ELM"
+    },
+    "fir": {
+        "name": "Fir",
+        "code": "FIR"
+    },
+    "larch": {
+        "name": "Larch",
+        "code": "LAR"
+    },
+    "mdf": {
+        "name": "MDF",
+        "code": "MDF"
+    },
+    "oak": {
+        "name": "Oak",
+        "code": "OAK"
+    },
+    "pine": {
+        "name": "Pine",
+        "code": "PIN"
+    },
+    "ply": {
+        "name": "Plywood",
+        "code": "PLY"
+    },
+    "poplar": {
+        "name": "Poplar",
+        "code": "POP"
+    },
+    "spruce": {
+        "name": "Spruce",
+        "code": "SPR"
+    },
+    "teak": {
+        "name": "Teak",
+        "code": "TEK"
+    },
+    "walnut": {
+        "name": "Walnut",
+        "code": "WAL"
+    },
+    "wenge": {
+        "name": "Wenge",
+        "code": "WEN"
+    },
+    "unknown": {
+        "name": "Unknown",
+        "code": "UKN"
+    }
+}

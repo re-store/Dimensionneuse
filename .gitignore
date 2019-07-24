@@ -1,0 +1,9 @@
+*.pdf
+*.afphoto
+
+python/*.jpg
+python/*.png
+python/old
+python/config
+
+master.css
