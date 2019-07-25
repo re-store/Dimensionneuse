@@ -1,0 +1,14 @@
+{
+    "re-store": {
+        "name": "Re-Store",
+        "code": "RS"
+    },
+    "woma": {
+        "name": "WoMa",
+        "code": "WOMA"
+    },
+    "unknown": {
+        "name": "Unknown",
+        "code": "UKN"
+    }
+}

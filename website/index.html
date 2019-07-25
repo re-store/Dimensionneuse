@@ -21,15 +21,22 @@
     </header>
 
     <div id="container">
+
+        <!-- Control card -->
         <div class="card">
 
-            <div><button id="calib" onclick="calibrate()"><i class="material-icons">settings</i> CALIBRATE</button>
+            <!-- Calibrate button -->
+            <div>
+                <button id="calib" onclick="calibrate()"><i class="material-icons">settings</i> CALIBRATE</button>
             </div>
 
             <div class="separator"></div>
 
-            <div>Re-Store</div>
-            <div>Material: <select name="materiau" id="materiau">
+            <!-- Location, material & volume selection -->
+            <div>Location: <select name="location" id="location">
+                    <option selected="true" disabled>---</option>
+                </select></div>
+            <div>Material: <select name="material" id="material">
                     <option selected="true" disabled>---</option>
                 </select></div>
             <div>Volume: <select name="volume" id="volume">
@@ -38,22 +45,26 @@
 
             <div class="separator"></div>
 
-            <div>X: <input type="number" class="inputMesure" name="x" id="x"> ± <input type="number"
-                    class="inputPrecision" name="px" id="px" value="10"></div>
-            <div>Y: <input type="number" class="inputMesure" name="y" id="y"> ± <input type="number"
-                    class="inputPrecision" name="py" id="py" value="10"></div>
-            <div>Z: <input type="number" class="inputMesure" name="z" id="z"> ± <input type="number"
-                    class="inputPrecision" name="pz" id="pz" value="1"></div>
-            <div> (measure X <input type="checkbox" name="cx" id="cx" checked>, Y <input type="checkbox" name="cy"
-                    id="cy" checked>, Z
-                <input type="checkbox" name="cz" id="cz" checked>)</div>
-            <div><button id="mesure" onclick="mesure()"><i class="material-icons">search</i> MEASURE</button></div>
+            <!-- Measure and precision input -->
+            <div>X: <input type="number" class="inputMeasure" name="x" id="x">
+                ± <input type="number" class="inputPrecision" name="px" id="px" value="10"> mm</div>
+            <div>Y: <input type="number" class="inputMeasure" name="y" id="y">
+                ± <input type="number" class="inputPrecision" name="py" id="py" value="10"> mm</div>
+            <div>Z: <input type="number" class="inputMeasure" name="z" id="z">
+                ± <input type="number" class="inputPrecision" name="pz" id="pz" value="1"> mm</div>
+            <div> (measure
+                X <input type="checkbox" name="cx" id="cx" checked>,
+                Y <input type="checkbox" name="cy" id="cy" checked>,
+                Z <input type="checkbox" name="cz" id="cz" checked>)</div>
+            <div><button id="measure" onclick="measure()"><i class="material-icons">search</i> MEASURE</button></div>
 
             <div class="separator"></div>
 
+            <!-- Upload button -->
             <div><button id="upload" onclick="upload()"><i class="material-icons">publish</i> UPLOAD</button></div>
         </div>
 
+        <!-- Console card -->
         <textarea name="console" id="console" cols="35" rows="20" readonly>
         </textarea>
 
@@ -76,7 +87,8 @@
         });
     }
 
-    populateSelectWithJSON("materiau", "config/materials.json");
+    populateSelectWithJSON("location", "config/locations.json");
+    populateSelectWithJSON("material", "config/materials.json");
     populateSelectWithJSON("volume", "config/volumes.json");
 
     function calibrate() {
@@ -89,12 +101,25 @@
         );
     }
 
-    function mesure() {
+    function measure() {
         $.get(
             "measure",
             { x: $("#cx").val(), y: $("#cy").val(), z: $("#cz").val() },
             function (data) {
-                outputToConsole(data);
+                let log = "Measured"
+                if (data.x !== false) {
+                    $("#x").val(data.x)
+                    log += " x=" + data.x
+                }
+                if (data.y !== false) {
+                    $("#y").val(data.y)
+                    log += " y=" + data.y
+                }
+                if (data.z !== false) {
+                    $("#z").val(data.z)
+                    log += " z=" + data.z
+                }
+                outputToConsole(log + ".");
             }
         );
     }
@@ -103,9 +128,9 @@
         $.post(
             "upload",
             {
-                x: $("#x").val(), y: $("#y").val(), z: $("#z").val(),
-                px: $("#px").val(), py: $("#py").val(), pz: $("#pz").val(),
-                mat: $("#materiau").val(), vol: $("#volume").val()
+                measure: [$("#x").val(), $("#y").val(), $("#z").val()],
+                precision: [$("#px").val(), $("#py").val(), $("#pz").val()],
+                mat: $("#material").val(), vol: $("#volume").val(), loc: $("#location").val()
             },
             function (data) {
                 outputToConsole(data);

@@ -1,9 +1,14 @@
 *.pdf
 *.afphoto
 
-python/*.jpg
-python/*.png
-python/old
-python/config
+measure/*.jpg
+measure/*.png
+measure/old
+measure/config
+__pycache__
 
 master.css
+
+node_modules/
+
+.DS_Store

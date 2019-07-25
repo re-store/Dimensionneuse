@@ -4,8 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "scss": "node-sass --watch public/master.scss -o public/master.css"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "CC-BY-4.0",
