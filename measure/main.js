@@ -6,10 +6,12 @@ module.exports = {
     /**
      * Calibrate the sensors.
      * 
-     * @returns {String} Log the operation.
+     * @returns {Promise} Calibration promise.
      */
     calibrate: function () {
-        return "Calibrated."
+        return new Promise(function(resolve, reject) {
+            resolve("Calibrated.")
+        })
     },
 
     /**
@@ -18,10 +20,12 @@ module.exports = {
      * @param {boolean} x Should measure x.
      * @param {boolean} y Should measure y.
      * @param {boolean} z Should measure z.
-     * @returns {Object} The result of the measure.
+     * @returns {Promise} Measure promise.
      */
     measure: function (x, y, z) {
-        let dim = {"x": 0, "y": 0, "z": 0}
-        return dim
+        return new Promise(function(resolve, reject) {
+            let dim = {"x": 0, "y": 0, "z": 0}
+            resolve(dim)
+        })
     }
 };

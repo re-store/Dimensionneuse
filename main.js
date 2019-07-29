@@ -9,7 +9,7 @@ var ip = require('ip')
 var measure = require('./measure/main')
 var database = require('./database/main')
 
-app.listen(port, () => console.log(`La Dimensionneuse is running !\n↳  On this computer : http://localhost:${port}\n↳  Remote access : http://${ip.address()}:3000`))
+app.listen(port, () => console.log(`La Dimensionneuse is running !\n->  On this computer : http://localhost:${port}\n->  Remote access : http://${ip.address()}:3000`))
 app.use(express.urlencoded({ extended: true }))
 
 // Served files
@@ -19,7 +19,9 @@ app.use('/config', express.static('config'))
 
 // GET & POST requests
 app.get('/measure', function (req, res) {
-    res.send(measure.measure(req.query.x, req.query.y, req.query.z))
+    measure.measure(req.query.x, req.query.y, req.query.z).then(function(value) {
+        res.send(value)
+    })
 })
 
 app.post('/calibrate', function (_req, res) {

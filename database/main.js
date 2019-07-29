@@ -11,9 +11,11 @@ module.exports = {
      * @param {String} material
      * @param {String} volume 
      * @param {String} location 
-     * @returns {String} Log the operation.
+     * @returns {Promise} Operation promise.
      */
     upload: function (measure, precision, material, volume, location) {
-        return "Upload successful."
+        return new Promise(function(resolve, reject) {
+            resolve("Upload successful.")
+        })
     }
 };

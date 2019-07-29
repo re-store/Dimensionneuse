@@ -26,9 +26,9 @@ node main.js
 
 This project is conceived in a modular way : the website, the measuring process and the database are three independant parts. It makes it easy to use other sensors or another database.
 
-`main.js` is the entry point. It uses `Express` to setup a local website. Here are the different requests implemented :
+`main.js` is the entry point. It uses `Express` to setup a local website. Here are the different implemented requests :
 
-- `GET /` (connecting to `localhost:3000`) serve the page in `website/`
+- `GET /` (connecting to `localhost:3000`) serves the page in `website/`
 - `POST /calibrate` calls the `calibrate` function in `measure/main.js`
 - `GET /measure` calls the `measure` function in `measure/main.js`
 - `POST /upload` calls the `upload` function in `database/main.js`
@@ -38,4 +38,4 @@ If you want to start from scratch, you can configure the dimensionneuse using [t
 
 ## License
 
-Project under Creative Commons Licence CC-BY 4.0
+Project under Creative Commons Licence CC-BY 4.0.

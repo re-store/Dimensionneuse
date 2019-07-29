@@ -25,13 +25,6 @@
         <!-- Control card -->
         <div class="card">
 
-            <!-- Calibrate button -->
-            <div>
-                <button id="calib" onclick="calibrate()"><i class="material-icons">settings</i> CALIBRATE</button>
-            </div>
-
-            <div class="separator"></div>
-
             <!-- Location, material & volume selection -->
             <div>Location: <select name="location" id="location">
                     <option selected="true" disabled>---</option>
@@ -44,6 +37,11 @@
                 </select></div>
 
             <div class="separator"></div>
+
+            <!-- Calibrate button -->
+            <div>
+                <button id="calib" onclick="calibrate()"><i class="material-icons">settings</i> CALIBRATE</button>
+            </div>
 
             <!-- Measure and precision input -->
             <div>X: <input type="number" class="inputMeasure" name="x" id="x">
