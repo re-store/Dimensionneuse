@@ -26,6 +26,10 @@ node main.js
 
 This project is conceived in a modular way : the website, the measuring process and the database are three independant parts. It makes it easy to use other sensors or another database.
 
+<p align="center">
+    <img src="structure.svg" />
+</p>
+
 `main.js` is the entry point. It uses `Express` to setup a local website. Here are the different implemented requests :
 
 - `GET /` (connecting to `localhost:3000`) serves the page in `website/`
