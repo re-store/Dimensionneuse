@@ -19,19 +19,31 @@ app.use('/config', express.static('config'))
 
 // GET & POST requests
 app.get('/measure', function (req, res) {
-    measure.measure(req.query.x, req.query.y, req.query.z).then(function (value) {
-        res.send(value)
-    })
+    measure.measure(req.query.x, req.query.y, req.query.z)
+        .then(function (value) {
+            res.send(value)
+        })
+        .catch(function (value) {
+            res.send(value)
+        })
 })
 
 app.post('/calibrate', function (_req, res) {
-    measure.calibrate().then(function (value) {
-        res.send(value)
-    })
+    measure.calibrate()
+        .then(function (value) {
+            res.send(value)
+        })
+        .catch(function (value) {
+            res.send(value)
+        })
 })
 
 app.post('/upload', function (req, res) {
-    database.upload(req.body.measure, req.body.precision, req.body.mat, req.body.vol, req.body.loc).then(function (value) {
-        res.send(value)
-    })
+    database.upload(req.body.measure, req.body.precision, req.body.mat, req.body.vol, req.body.loc)
+        .then(function (value) {
+            res.send(value)
+        })
+        .catch(function (value) {
+            res.send(value)
+        })
 })
