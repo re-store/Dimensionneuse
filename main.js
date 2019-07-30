@@ -6,8 +6,8 @@ const express = require('express')
 const app = express()
 const port = 3000
 var ip = require('ip')
-var measure = require('./measure/main')
-var database = require('./database/main')
+var measure = require('./measure')
+var database = require('./database')
 
 app.listen(port, () => console.log(`La Dimensionneuse is running !\n->  On this computer : http://localhost:${port}\n->  Remote access : http://${ip.address()}:3000`))
 app.use(express.urlencoded({ extended: true }))
@@ -20,30 +20,30 @@ app.use('/config', express.static('config'))
 // GET & POST requests
 app.get('/measure', function (req, res) {
     measure.measure(req.query.x, req.query.y, req.query.z)
-        .then(function (value) {
+        .then(value => {
             res.send(value)
         })
-        .catch(function (value) {
+        .catch(value => {
             res.send(value)
         })
 })
 
-app.post('/calibrate', function (_req, res) {
+app.post('/calibrate', (_req, res) => {
     measure.calibrate()
-        .then(function (value) {
+        .then(value => {
             res.send(value)
         })
-        .catch(function (value) {
+        .catch(value => {
             res.send(value)
         })
 })
 
-app.post('/upload', function (req, res) {
+app.post('/upload', (req, res) => {
     database.upload(req.body.measure, req.body.precision, req.body.mat, req.body.vol, req.body.loc)
-        .then(function (value) {
+        .then(value => {
             res.send(value)
         })
-        .catch(function (value) {
+        .catch(value => {
             res.send(value)
         })
 })

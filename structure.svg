@@ -1,97 +1,99 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 8877 4993" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:10;">
-    <g transform="matrix(3.125,0,0,3.125,0,0)">
-        <g id="Calque-1" serif:id="Calque 1" transform="matrix(1.33333,0,0,1.33333,0,0)">
-            <g transform="matrix(0.669327,0,0,0.669327,1493.92,364.847)">
-                <g>
-                    <use xlink:href="#_Image1" x="0" y="0" width="526px" height="862px"/>
-                </g>
-            </g>
-            <g transform="matrix(1,0,0,1,1504.25,264.431)">
-                <path d="M0,739.057L331.407,739.057C369.338,739.057 400.087,708.308 400.087,670.377L400.087,68.679C400.087,30.748 369.338,0 331.407,0L0,0C-37.931,0 -68.68,30.748 -68.68,68.679L-68.68,670.377C-68.68,708.308 -37.931,739.057 0,739.057Z" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:5px;"/>
-            </g>
-            <g transform="matrix(1,0,0,1,755.142,264.431)">
-                <path d="M0,739.057L270.133,739.057C308.063,739.057 338.812,708.308 338.812,670.377L338.812,68.679C338.812,30.748 308.063,0 270.133,0L0,0C-37.931,0 -68.68,30.748 -68.68,68.679L-68.68,670.377C-68.68,708.308 -37.931,739.057 0,739.057Z" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:5px;"/>
-            </g>
-            <g transform="matrix(1,0,0,1,1581.87,469.578)">
-                <path d="M0,115.276L-138.15,115.276C-160.788,115.276 -181.604,102.868 -192.371,82.957L-219.756,32.319C-230.523,12.407 -251.34,0 -273.977,0L-474.468,0" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:2px;"/>
-            </g>
-            <g transform="matrix(1,0,0,1,1581.87,652.642)">
-                <path d="M0,172.722L-132.359,172.722C-158.448,172.722 -181.712,156.298 -190.444,131.714L-222.667,41.008C-231.399,16.424 -254.663,0 -280.752,0L-474.468,0" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:2px;"/>
-            </g>
-            <g opacity="0.96">
-                <g transform="matrix(1,0,0,1,811.881,386.072)">
-                    <path d="M0,160.236L-519.687,160.236C-534.604,160.236 -546.695,148.144 -546.695,133.228L-546.695,27.007C-546.695,12.091 -534.604,0 -519.687,0L0,0C14.915,0 27.007,12.091 27.007,27.007L27.007,133.228C27.007,148.144 14.915,160.236 0,160.236Z" style="fill:white;fill-rule:nonzero;stroke:black;stroke-width:3px;"/>
-                </g>
-            </g>
-            <g opacity="0.96">
-                <g transform="matrix(1,0,0,1,811.881,568.768)">
-                    <path d="M0,161.347L-519.687,161.347C-534.604,161.347 -546.695,149.255 -546.695,134.339L-546.695,27.007C-546.695,12.091 -534.604,0 -519.687,0L0,0C14.915,0 27.007,12.091 27.007,27.007L27.007,134.339C27.007,149.255 14.915,161.347 0,161.347Z" style="fill:white;fill-rule:nonzero;stroke:black;stroke-width:3px;"/>
-                </g>
-            </g>
-            <g opacity="0.96">
-                <g transform="matrix(1,0,0,1,811.881,762.556)">
-                    <path d="M0,149.527L-519.687,149.527C-534.604,149.527 -546.695,137.435 -546.695,122.519L-546.695,27.006C-546.695,12.091 -534.604,0 -519.687,0L0,0C14.915,0 27.007,12.091 27.007,27.006L27.007,122.519C27.007,137.435 14.915,149.527 0,149.527Z" style="fill:white;fill-rule:nonzero;stroke:black;stroke-width:3px;"/>
-                </g>
-            </g>
-            <g transform="matrix(-1,0,0,1,851.399,469.577)">
-                <path d="M-228.766,0L0,0" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:2px;"/>
-            </g>
-            <g transform="matrix(-1,0,0,1,851.399,652.643)">
-                <path d="M-228.766,0L0,0" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:2px;"/>
-            </g>
-            <g transform="matrix(-1,0,0,1,851.399,841.736)">
-                <path d="M-228.766,0L0,0" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:2px;"/>
-            </g>
-            <g transform="matrix(1,0,0,1,1581.87,841.736)">
-                <path d="M0,66.351L-148.922,66.351C-166.106,66.351 -182.511,59.177 -194.179,46.56L-218.933,19.791C-230.6,7.174 -247.005,0 -264.189,0L-474.468,0" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:2px;"/>
-            </g>
-            <text x="1576.34px" y="327.758px" style="font-family:'RobotoMono-Bold', 'Roboto Mono';font-weight:700;font-size:39px;">website/</text>
-            <text x="1107.4px" y="456.332px" style="font-family:'RobotoMono-Medium', 'Roboto Mono';font-weight:500;font-size:26px;">POST /calibrate</text>
-            <text x="808.296px" y="330.508px" style="font-family:'RobotoMono-Bold', 'Roboto Mono';font-weight:700;font-size:39px;">main.js</text>
-            <text x="1107.4px" y="638.254px" style="font-family:'RobotoMono-Medium', 'Roboto Mono';font-weight:500;font-size:26px;">GET /measure</text>
-            <text x="851.399px" y="450.332px" style="font-family:'RobotoMono-Medium', 'Roboto Mono';font-weight:500;font-size:18px;">measure.calibrate()</text>
-            <text x="851.399px" y="633.392px" style="font-family:'RobotoMono-Medium', 'Roboto Mono';font-weight:500;font-size:18px;">measure.measure(...)</text>
+<svg width="100%" height="100%" viewBox="0 0 2841 1598" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:10;">
+    <g id="Calque-1" serif:id="Calque 1" transform="matrix(1.33333,0,0,1.33333,0,0)">
+        <g transform="matrix(0.669327,0,0,0.669327,1493.92,364.847)">
             <g>
-                <text x="851.399px" y="822.491px" style="font-family:'RobotoMono-Medium', 'Roboto Mono';font-weight:500;font-size:18px;">database.upload(...)</text>
-                <text x="1107.4px" y="828.492px" style="font-family:'RobotoMono-Medium', 'Roboto Mono';font-weight:500;font-size:26px;">POST /upload</text>
+                <use xlink:href="#_Image1" x="0" y="0" width="526px" height="862px"/>
             </g>
-            <g>
-                <text x="304.565px" y="616.739px" style="font-family:'RobotoMono-Bold', 'Roboto Mono';font-weight:700;font-size:30px;">database/</text>
-                <text x="304.564px" y="652.129px" style="font-family:'RobotoMono-Regular', 'Roboto Mono';font-size:20px;">Database access</text>
-                <text x="304.564px" y="676.129px" style="font-family:'RobotoMono-Regular', 'Roboto Mono';font-size:20px;">functions (e.g.</text>
-                <text x="304.564px" y="700.129px" style="font-family:'RobotoMono-Regular', 'Roboto Mono';font-size:20px;">postgresql)</text>
-                <text x="304.565px" y="809.689px" style="font-family:'RobotoMono-Bold', 'Roboto Mono';font-weight:700;font-size:30px;">config/</text>
-                <text x="304.564px" y="845.079px" style="font-family:'RobotoMono-Regular', 'Roboto Mono';font-size:20px;">Volumes, materials,</text>
-                <text x="304.564px" y="869.079px" style="font-family:'RobotoMono-Regular', 'Roboto Mono';font-size:20px;">locations...</text>
+        </g>
+        <g transform="matrix(1,0,0,1,1504.25,264.43)">
+            <path d="M0,739.058L331.407,739.058C369.338,739.058 400.087,708.309 400.087,670.378L400.087,68.68C400.087,30.749 369.338,0 331.407,0L0,0C-37.931,0 -68.68,30.749 -68.68,68.68L-68.68,670.378C-68.68,708.309 -37.931,739.058 0,739.058Z" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:5px;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,755.142,264.43)">
+            <path d="M0,739.058L270.133,739.058C308.064,739.058 338.813,708.309 338.813,670.378L338.813,68.68C338.813,30.749 308.064,0 270.133,0L0,0C-37.931,0 -68.68,30.749 -68.68,68.68L-68.68,670.378C-68.68,708.309 -37.931,739.058 0,739.058Z" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:5px;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,1581.87,469.577)">
+            <path d="M0,115.277L-147.59,115.277C-164.411,115.277 -179.88,106.056 -187.881,91.26L-224.246,24.016C-232.248,9.22 -247.716,0 -264.537,0L-474.468,0" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:2px;"/>
+        </g>
+        <g opacity="0.96">
+            <g transform="matrix(1,0,0,1,811.881,386.072)">
+                <path d="M0,160.236L-519.687,160.236C-534.604,160.236 -546.695,148.144 -546.695,133.228L-546.695,27.007C-546.695,12.091 -534.604,0 -519.687,0L0,0C14.915,0 27.007,12.091 27.007,27.007L27.007,133.228C27.007,148.144 14.915,160.236 0,160.236Z" style="fill:white;fill-rule:nonzero;stroke:black;stroke-width:3px;"/>
             </g>
-            <g>
-                <text x="304.565px" y="428.178px" style="font-family:'RobotoMono-Bold', 'Roboto Mono';font-weight:700;font-size:30px;">measure/</text>
-                <text x="304.564px" y="463.568px" style="font-family:'RobotoMono-Regular', 'Roboto Mono';font-size:20px;">Measuring functions</text>
-                <text x="304.564px" y="487.568px" style="font-family:'RobotoMono-Regular', 'Roboto Mono';font-size:20px;">(e.g. laser sensor</text>
-                <text x="304.564px" y="511.568px" style="font-family:'RobotoMono-Regular', 'Roboto Mono';font-size:20px;">+ Python)</text>
+        </g>
+        <g opacity="0.96">
+            <g transform="matrix(1,0,0,1,811.881,568.768)">
+                <path d="M0,161.347L-519.687,161.347C-534.604,161.347 -546.695,149.255 -546.695,134.339L-546.695,27.007C-546.695,12.091 -534.604,0 -519.687,0L0,0C14.915,0 27.007,12.091 27.007,27.007L27.007,134.339C27.007,149.255 14.915,161.347 0,161.347Z" style="fill:white;fill-rule:nonzero;stroke:black;stroke-width:3px;"/>
             </g>
-            <text x="722.144px" y="655.252px" style="font-family:'RobotoMono-Medium', 'Roboto Mono';font-weight:500;font-size:20px;">main.js</text>
-            <text x="746.144px" y="843.132px" style="font-family:'RobotoMono-Medium', 'Roboto Mono';font-weight:500;font-size:20px;">.json</text>
-            <text x="729.284px" y="472.252px" style="font-family:'RobotoMono-Medium', 'Roboto Mono';font-weight:500;font-size:20px;">main.js</text>
-            <g transform="matrix(1,0,0,1,811.881,386.437)">
-                <path d="M0,160.235L-519.687,160.235C-534.604,160.235 -546.695,148.144 -546.695,133.228L-546.695,27.006C-546.695,12.091 -534.604,0 -519.687,0L0,0C14.915,0 27.007,12.091 27.007,27.006L27.007,133.228C27.007,148.144 14.915,160.235 0,160.235Z" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:3px;"/>
+        </g>
+        <g opacity="0.96">
+            <g transform="matrix(1,0,0,1,811.881,762.556)">
+                <path d="M0,149.527L-519.687,149.527C-534.604,149.527 -546.695,137.435 -546.695,122.519L-546.695,27.006C-546.695,12.09 -534.604,0 -519.687,0L0,0C14.915,0 27.007,12.09 27.007,27.006L27.007,122.519C27.007,137.435 14.915,149.527 0,149.527Z" style="fill:white;fill-rule:nonzero;stroke:black;stroke-width:3px;"/>
             </g>
-            <g transform="matrix(1,0,0,1,811.881,569.131)">
-                <path d="M0,161.347L-519.687,161.347C-534.604,161.347 -546.695,149.255 -546.695,134.34L-546.695,27.008C-546.695,12.092 -534.604,0 -519.687,0L0,0C14.915,0 27.007,12.092 27.007,27.008L27.007,134.34C27.007,149.255 14.915,161.347 0,161.347Z" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:3px;"/>
-            </g>
-            <g transform="matrix(1,0,0,1,811.881,762.919)">
-                <path d="M0,149.527L-519.687,149.527C-534.604,149.527 -546.695,137.436 -546.695,122.52L-546.695,27.007C-546.695,12.091 -534.604,0 -519.687,0L0,0C14.915,0 27.007,12.091 27.007,27.007L27.007,122.52C27.007,137.436 14.915,149.527 0,149.527Z" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:3px;"/>
-            </g>
-            <g transform="matrix(1,0,0,1,1866.43,208.938)">
-                <path d="M0,850.042L-1142.06,850.042C-1196.52,850.042 -1240.67,805.895 -1240.67,751.436L-1240.67,98.606C-1240.67,44.147 -1196.52,0 -1142.06,0L0,0C54.459,0 98.607,44.147 98.607,98.606L98.607,751.436C98.607,805.895 54.459,850.042 0,850.042Z" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:7px;stroke-dasharray:33,12,12,12;stroke-dashoffset:64.4;"/>
-            </g>
-            <g transform="matrix(1,0,0,1,473.687,208.938)">
-                <path d="M0,850.042L-209.812,850.042C-264.271,850.042 -308.418,805.895 -308.418,751.436L-308.418,98.606C-308.418,44.147 -264.271,0 -209.812,0L0,0C54.459,0 98.606,44.147 98.606,98.606L98.606,751.436C98.606,805.895 54.459,850.042 0,850.042Z" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:7px;stroke-dasharray:32.98,11.99,11.99,11.99;"/>
-            </g>
-            <text x="270.065px" y="174.571px" style="font-family:'RobotoMono-Bold', 'Roboto Mono';font-weight:700;font-size:47px;">Modular</text>
-            <text x="1057.55px" y="174.571px" style="font-family:'RobotoMono-Bold', 'Roboto Mono';font-weight:700;font-size:47px;">Basic ecosystem</text>
+        </g>
+        <g transform="matrix(-1,0,0,1,851.399,469.576)">
+            <path d="M-228.766,0L0,0" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:2px;"/>
+        </g>
+        <g transform="matrix(-1,0,0,1,851.399,625.075)">
+            <path d="M-228.766,0L0,0" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:2px;"/>
+        </g>
+        <g transform="matrix(-1,0,0,1,851.399,688.169)">
+            <path d="M-228.766,0L0,0" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:2px;"/>
+        </g>
+        <text x="1576.34px" y="327.758px" style="font-family:'RobotoMono-Bold', 'Roboto Mono';font-weight:700;font-size:39px;">website/</text>
+        <text x="1107.4px" y="456.332px" style="font-family:'RobotoMono-Medium', 'Roboto Mono';font-weight:500;font-size:26px;">POST /calibrate</text>
+        <text x="808.296px" y="330.508px" style="font-family:'RobotoMono-Bold', 'Roboto Mono';font-weight:700;font-size:39px;">main.js</text>
+        <text x="1107.4px" y="611.831px" style="font-family:'RobotoMono-Medium', 'Roboto Mono';font-weight:500;font-size:26px;">GET /measure</text>
+        <text x="851.399px" y="450.332px" style="font-family:'RobotoMono-Medium', 'Roboto Mono';font-weight:500;font-size:18px;">measure.calibrate()</text>
+        <g>
+            <text x="851.399px" y="605.834px" style="font-family:'RobotoMono-Medium', 'Roboto Mono';font-weight:500;font-size:18px;">measure.measure(...)</text>
+            <text x="851.399px" y="668.924px" style="font-family:'RobotoMono-Medium', 'Roboto Mono';font-weight:500;font-size:18px;">database.upload(...)</text>
+        </g>
+        <text x="1107.4px" y="674.925px" style="font-family:'RobotoMono-Medium', 'Roboto Mono';font-weight:500;font-size:26px;">POST /upload</text>
+        <g>
+            <text x="304.565px" y="616.739px" style="font-family:'RobotoMono-Bold', 'Roboto Mono';font-weight:700;font-size:30px;">database/</text>
+            <text x="304.564px" y="652.129px" style="font-family:'RobotoMono-Regular', 'Roboto Mono';font-size:20px;">Database access</text>
+            <text x="304.564px" y="676.129px" style="font-family:'RobotoMono-Regular', 'Roboto Mono';font-size:20px;">functions (e.g.</text>
+            <text x="304.564px" y="700.129px" style="font-family:'RobotoMono-Regular', 'Roboto Mono';font-size:20px;">postgresql)</text>
+            <text x="304.565px" y="809.689px" style="font-family:'RobotoMono-Bold', 'Roboto Mono';font-weight:700;font-size:30px;">config/</text>
+            <text x="304.564px" y="845.079px" style="font-family:'RobotoMono-Regular', 'Roboto Mono';font-size:20px;">Volumes, materials,</text>
+            <text x="304.564px" y="869.079px" style="font-family:'RobotoMono-Regular', 'Roboto Mono';font-size:20px;">locations...</text>
+        </g>
+        <g>
+            <text x="304.565px" y="428.178px" style="font-family:'RobotoMono-Bold', 'Roboto Mono';font-weight:700;font-size:30px;">measure/</text>
+            <text x="304.564px" y="463.568px" style="font-family:'RobotoMono-Regular', 'Roboto Mono';font-size:20px;">Measuring functions</text>
+            <text x="304.564px" y="487.568px" style="font-family:'RobotoMono-Regular', 'Roboto Mono';font-size:20px;">(e.g. laser sensor</text>
+            <text x="304.564px" y="511.568px" style="font-family:'RobotoMono-Regular', 'Roboto Mono';font-size:20px;">+ Python)</text>
+        </g>
+        <g transform="matrix(1,0,0,1,-0.0421453,0)">
+            <text x="722.144px" y="655.252px" style="font-family:'RobotoMono-Medium', 'Roboto Mono';font-weight:500;font-size:20px;">index.js</text>
+        </g>
+        <text x="746.144px" y="843.132px" style="font-family:'RobotoMono-Medium', 'Roboto Mono';font-weight:500;font-size:20px;">.json</text>
+        <g transform="matrix(1,0,0,1,-7.18215,0)">
+            <text x="729.284px" y="472.252px" style="font-family:'RobotoMono-Medium', 'Roboto Mono';font-weight:500;font-size:20px;">index.js</text>
+        </g>
+        <g transform="matrix(1,0,0,1,811.881,386.437)">
+            <path d="M0,160.235L-519.687,160.235C-534.604,160.235 -546.695,148.144 -546.695,133.228L-546.695,27.006C-546.695,12.091 -534.604,0 -519.687,0L0,0C14.915,0 27.007,12.091 27.007,27.006L27.007,133.228C27.007,148.144 14.915,160.235 0,160.235Z" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:3px;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,811.881,569.131)">
+            <path d="M0,161.347L-519.687,161.347C-534.604,161.347 -546.695,149.255 -546.695,134.34L-546.695,27.007C-546.695,12.092 -534.604,0 -519.687,0L0,0C14.915,0 27.007,12.092 27.007,27.007L27.007,134.34C27.007,149.255 14.915,161.347 0,161.347Z" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:3px;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,811.881,762.919)">
+            <path d="M0,149.527L-519.687,149.527C-534.604,149.527 -546.695,137.436 -546.695,122.52L-546.695,27.007C-546.695,12.091 -534.604,0 -519.687,0L0,0C14.915,0 27.007,12.091 27.007,27.007L27.007,122.52C27.007,137.436 14.915,149.527 0,149.527Z" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:3px;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,1866.43,208.938)">
+            <path d="M0,850.042L-1142.06,850.042C-1196.52,850.042 -1240.67,805.895 -1240.67,751.436L-1240.67,98.606C-1240.67,44.147 -1196.52,0 -1142.06,0L0,0C54.459,0 98.607,44.147 98.607,98.606L98.607,751.436C98.607,805.895 54.459,850.042 0,850.042Z" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:7px;stroke-dasharray:33,12,12,12;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,473.687,208.938)">
+            <path d="M0,850.042L-209.812,850.042C-264.271,850.042 -308.418,805.895 -308.418,751.436L-308.418,98.606C-308.418,44.147 -264.271,0 -209.812,0L0,0C54.459,0 98.606,44.147 98.606,98.606L98.606,751.436C98.606,805.895 54.459,850.042 0,850.042Z" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:7px;stroke-dasharray:32.98,11.99,11.99,11.99;"/>
+        </g>
+        <text x="270.065px" y="174.571px" style="font-family:'RobotoMono-Bold', 'Roboto Mono';font-weight:700;font-size:47px;">Modular</text>
+        <text x="1057.55px" y="174.571px" style="font-family:'RobotoMono-Bold', 'Roboto Mono';font-weight:700;font-size:47px;">Basic ecosystem</text>
+        <g transform="matrix(1,0,0,1,1581.87,626.553)">
+            <path d="M0,201.375L-96.392,201.375C-118.664,201.375 -139.616,190.807 -152.854,172.896L-259.59,28.479C-272.828,10.568 -293.779,0 -316.053,0L-474.468,0" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:2px;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,1581.87,688.169)">
+            <path d="M0,216.926L-97.821,216.926C-119.093,216.926 -138.997,206.443 -151.031,188.904L-261.412,28.023C-273.446,10.483 -293.352,0 -314.623,0L-474.468,0" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:2px;"/>
         </g>
     </g>
     <defs>

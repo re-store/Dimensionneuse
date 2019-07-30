@@ -9,7 +9,7 @@ module.exports = {
      * @returns {Promise} Calibration promise.
      */
     calibrate: function () {
-        return new Promise(function(resolve, reject) {
+        return new Promise((resolve, reject) => {
             resolve("Calibrated.")
         })
     },
@@ -23,9 +23,9 @@ module.exports = {
      * @returns {Promise} Measure promise.
      */
     measure: function (x, y, z) {
-        return new Promise(function(resolve, reject) {
-            let dim = {"x": 0, "y": 0, "z": 0}
+        return new Promise((resolve, reject) => {
+            let dim = {"x": 100, "y": 50, "z": 10}
             resolve(dim)
         })
     }
-};
+}

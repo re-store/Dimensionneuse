@@ -3,6 +3,15 @@
  */
 var { Pool, Client } = require('pg');
 
+const client = new Client({
+    user: 'dimn',
+    host: '127.0.0.1',
+    database: 'dimn',
+    password: 'Mvtmjs1n',
+    port: 5432,
+})
+const tableName = "prototest"
+
 module.exports = {
     /**
      * Upload a plank to the database.
@@ -15,39 +24,33 @@ module.exports = {
      * @returns {Promise} Operation promise.
      */
     upload: function (measure, precision, material, volume, location) {
-        return new Promise(function (resolve, reject) {
+        return new Promise((resolve, reject) => {
 
             // Parameters validity test
             if (!validate(measure, precision, material, volume, location)) {
                 reject("Upload failed : incorrect parameters.")
             }
 
-            var client = new Client({
-                user: 'dimn',
-                host: '127.0.0.1',
-                database: 'dimn',
-                password: 'Mvtmjs1n',
-                port: 5432,
-            })
+            // SQL query and parameters
+            const query = {
+                text: `INSERT INTO ${tableName}(x, y, z, material, type, location) VALUES($1, $2, $3, $4, $5, $6) RETURNING *`,
+                values: [Number(measure[0]), Number(measure[1]), Number(measure[2]), material, volume, location]
+            }
 
-            client.connect()
-            console.log("Connected")
-
-            // SQL query
-            var text = 'INSERT INTO prototest(x, y, z, material, type, location) VALUES($1, $2, $3, $4, $5, $6) RETURNING *'
-            var values = [Number(measure[0]), Number(measure[1]), Number(measure[2]), material, volume, location]
-
-            client.query(text, values, (err, res) => {
-                if (err) {
-                    reject("Upload failed : database error (database/main.js)")
-                } else {
-                    resolve("Upload successful.")
-                }
-            })
-
+            client
+                .connect() // 1st promise : database connexion
+                .then(value => {
+                    client
+                        .query(query) // 2nd promise : SQL query
+                        .then(res => resolve("Upload successful."))
+                        .catch(e => reject("Upload failed : database error (database/main.js)"))
+                })
+                .catch(e => {
+                    reject("Upload failed : database connexion error.")
+                })
         })
     }
-};
+}
 
 /**
  * Checks if the given parameters are valid.
