@@ -47,3 +47,13 @@ app.post('/upload', (req, res) => {
             res.send(value)
         })
 })
+
+app.get('/fetch', function (req, res) {
+    database.fetch()
+        .then(value => {
+            res.send(value)
+        })
+        .catch(value => {
+            res.send(value)
+        })
+})

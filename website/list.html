@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>La Dimensionneuse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="master.min.css">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div id="title">La Dimensionneuse</div>
+        <div id="icons">
+            <a href="https://restore.woma.fr/"><i class="material-icons">home</i></a>
+            <a href="https://github.com/Re-Store/Dimensionneuse"><i class="material-icons">code</i></a>
+            <a href="/index.html"><i class="material-icons">search</i></a>
+        </div>
+    </header>
+
+    <div class="card">
+        <div><button id="refresh" onclick="fetch()"><i class="material-icons">refresh</i> FETCH</button></div>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>x</th>
+                <th></th>
+                <th>y</th>
+                <th></th>
+                <th>z</th>
+                <th></th>
+                <th>Material</th>
+                <th>Volume</th>
+                <th>Location</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>RS-1</td>
+                <td class="measuretd"><input type="number" name="" id="" class="measure" value="1200"></td>
+                <td>± <input type="number" name="" id="" class="precision" value="10"></td>
+                <td class="measuretd"><input type="number" name="" id="" class="measure" value="687"></td>
+                <td>± <input type="number" name="" id="" class="precision" value="10"></td>
+                <td class="measuretd"><input type="number" name="" id="" class="measure" value="14"></td>
+                <td>± <input type="number" name="" id="" class="precision" value="1"></td>
+                <td>Acacia</td>
+                <td>Plank</td>
+                <td>Re-Store</td>
+                <td class="icontd"><i class="material-icons">publish</i></td>
+                <td class="icontd"><i class="material-icons">delete</i></td>
+            </tr>
+            <tr>
+                <td>RS-2</td>
+                <td class="measuretd"><input type="number" name="" id="" class="measure" value="1200"></td>
+                <td>± <input type="number" name="" id="" class="precision" value="10"></td>
+                <td class="measuretd"><input type="number" name="" id="" class="measure" value="687"></td>
+                <td>± <input type="number" name="" id="" class="precision" value="10"></td>
+                <td class="measuretd"><input type="number" name="" id="" class="measure" value="14"></td>
+                <td>± <input type="number" name="" id="" class="precision" value="1"></td>
+                <td>Acacia</td>
+                <td>Plank</td>
+                <td>Re-Store</td>
+                <td class="icontd"><i class="material-icons">publish</i></td>
+                <td class="icontd"><i class="material-icons">delete</i></td>
+            </tr>
+            <tr>
+                <td>RS-3</td>
+                <td class="measuretd"><input type="number" name="" id="" class="measure" value="1200"></td>
+                <td>± <input type="number" name="" id="" class="precision" value="10"></td>
+                <td class="measuretd"><input type="number" name="" id="" class="measure" value="687"></td>
+                <td>± <input type="number" name="" id="" class="precision" value="10"></td>
+                <td class="measuretd"><input type="number" name="" id="" class="measure" value="14"></td>
+                <td>± <input type="number" name="" id="" class="precision" value="1"></td>
+                <td>Acacia</td>
+                <td>Plank</td>
+                <td>Re-Store</td>
+                <td class="icontd"><i class="material-icons">publish</i></td>
+                <td class="icontd"><i class="material-icons">delete</i></td>
+            </tr>
+            <tr>
+                <td>RS-4</td>
+                <td class="measuretd"><input type="number" name="" id="" class="measure" value="1200"></td>
+                <td>± <input type="number" name="" id="" class="precision" value="10"></td>
+                <td class="measuretd"><input type="number" name="" id="" class="measure" value="687"></td>
+                <td>± <input type="number" name="" id="" class="precision" value="10"></td>
+                <td class="measuretd"><input type="number" name="" id="" class="measure" value="14"></td>
+                <td>± <input type="number" name="" id="" class="precision" value="1"></td>
+                <td>Acacia</td>
+                <td>Plank</td>
+                <td>Re-Store</td>
+                <td class="icontd"><i class="material-icons">publish</i></td>
+                <td class="icontd"><i class="material-icons">delete</i></td>
+            </tr>
+            <tr>
+                <td>RS-5</td>
+                <td class="measuretd"><input type="number" name="" id="" class="measure" value="1200"></td>
+                <td>± <input type="number" name="" id="" class="precision" value="10"></td>
+                <td class="measuretd"><input type="number" name="" id="" class="measure" value="687"></td>
+                <td>± <input type="number" name="" id="" class="precision" value="10"></td>
+                <td class="measuretd"><input type="number" name="" id="" class="measure" value="14"></td>
+                <td>± <input type="number" name="" id="" class="precision" value="1"></td>
+                <td>Acacia</td>
+                <td>Plank</td>
+                <td>Re-Store</td>
+                <td class="icontd"><i class="material-icons">publish</i></td>
+                <td class="icontd"><i class="material-icons">delete</i></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+<script>
+    function fetch() {
+        $.get(
+            "fetch",
+            {},
+            function (data) {
+                console.log(data);
+            }
+        );
+    }
+</script>
+
+</html>

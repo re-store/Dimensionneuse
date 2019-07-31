@@ -49,6 +49,28 @@ module.exports = {
                     reject("Upload failed : database connexion error.")
                 })
         })
+    },
+
+    fetch: function() {
+        return new Promise((resolve, reject) => {
+
+            // SQL query and parameters
+            const query = {
+                text: `SELECT * FROM ${tableName}`
+            }
+
+            client
+                .connect() // 1st promise : database connexion
+                .then(value => {
+                    client
+                        .query(query) // 2nd promise : SQL query
+                        .then(res => resolve(res))
+                        .catch(e => reject("Upload failed : database error (database/main.js)"))
+                })
+                .catch(e => {
+                    reject("Upload failed : database connexion error.")
+                })
+        })
     }
 }
 

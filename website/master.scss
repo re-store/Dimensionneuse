@@ -166,3 +166,43 @@ textarea {
   vertical-align: top;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
+
+table {
+  border-collapse: collapse;
+  th,
+  td {
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #eee;
+  } 
+
+  input {
+    border-style: solid;
+    border-radius: 4px;
+    border: 1px solid black;
+    padding: 4px;
+  }
+
+  .measure {
+    width: 48px;
+    text-align: end;
+  }
+
+  .measuretd {
+    padding-right: 0;
+    padding-left: 16px;
+  }
+
+  .precision {
+    width: 36px;
+  }
+
+  .icontd {
+    width: 64px;
+    i {
+      margin-left: 18px;
+    }
+  }
+}

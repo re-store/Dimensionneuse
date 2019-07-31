@@ -24,7 +24,7 @@ module.exports = {
      */
     measure: function (x, y, z) {
         return new Promise((resolve, reject) => {
-            let dim = {"x": 100, "y": 50, "z": 10}
+            let dim = { "x": 100, "y": 50, "z": 10 }
             resolve(dim)
         })
     }
