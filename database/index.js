@@ -3,14 +3,17 @@
  */
 var { Pool, Client } = require('pg');
 
-const client = new Client({
-    user: 'dimn',
+const dbConfig = {
+    user: 'pi',
     host: '127.0.0.1',
-    database: 'dimn',
-    password: 'Mvtmjs1n',
+    database: 're-store',
+    password: 'raspberry',
     port: 5432,
-})
-const tableName = "prototest"
+}
+
+const pool = new Pool(dbConfig)
+
+const tableName = "dimensionneuse.dimensionneuse"
 
 module.exports = {
     /**
@@ -31,45 +34,33 @@ module.exports = {
                 reject("Upload failed : incorrect parameters.")
             }
 
-            // SQL query and parameters
-            const query = {
-                text: `INSERT INTO ${tableName}(x, y, z, material, type, location) VALUES($1, $2, $3, $4, $5, $6) RETURNING *`,
-                values: [Number(measure[0]), Number(measure[1]), Number(measure[2]), material, volume, location]
-            }
+            plankID(measure, precision, material, volume, location) // 1st promise : get plank ID
+                .then(id => {
 
-            client
-                .connect() // 1st promise : database connexion
-                .then(value => {
-                    client
-                        .query(query) // 2nd promise : SQL query
-                        .then(res => resolve("Upload successful."))
-                        .catch(e => reject("Upload failed : database error (database/main.js)"))
+                    const query2 = {
+                        text: `INSERT INTO ${tableName}(id, x, y, z, px, py, pz, material, volume, location) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
+                        values: [id,
+                            Number(measure[0]), Number(measure[1]), Number(measure[2]),
+                            Number(precision[0]), Number(precision[1]), Number(precision[2]),
+                            material, volume, location]
+                    }
+
+                    pool
+                        .query(query2) // 2nd promise : INSERT query
+                        .then(res => resolve("Upload successful, ID " + id))
+                        .catch(e => reject(e))
                 })
-                .catch(e => {
-                    reject("Upload failed : database connexion error.")
-                })
+                .catch(e => reject(e))
+
         })
     },
 
-    fetch: function() {
+    fetch: function () {
         return new Promise((resolve, reject) => {
-
-            // SQL query and parameters
-            const query = {
-                text: `SELECT * FROM ${tableName}`
-            }
-
-            client
-                .connect() // 1st promise : database connexion
-                .then(value => {
-                    client
-                        .query(query) // 2nd promise : SQL query
-                        .then(res => resolve(res))
-                        .catch(e => reject("Upload failed : database error (database/main.js)"))
-                })
-                .catch(e => {
-                    reject("Upload failed : database connexion error.")
-                })
+            pool
+                .query(`SELECT * FROM ${tableName}`)
+                .then(res => resolve(res))
+                .catch(e => reject(e))
         })
     }
 }
@@ -102,4 +93,31 @@ function validate(measure, precision, material, volume, location) {
     }
 
     return true
+}
+
+/**
+ * Returns the plank ID.
+ * 
+ * @param {Array} measure [x, y, z] measure in mm.
+ * @param {Array} precision [x, y, z] precision in mm.
+ * @param {String} material
+ * @param {String} volume 
+ * @param {String} location 
+ * @returns {Promise} Promise resolving with the right ID.
+ */
+function plankID(measure, precision, material, volume, location) {
+    return new Promise((resolve, reject) => {
+        // SQL query and parameters
+        const query = {
+            text: `SELECT COUNT(*) FROM ${tableName} WHERE location=$1`,
+            values: [location]
+        }
+
+        pool
+            .query(query)
+            .then(res => {
+                resolve(location + '-' + (Number(res.rows[0].count) + 1))
+            })
+            .catch(e => reject(e))
+    })
 }

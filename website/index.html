@@ -44,15 +44,13 @@
             </div>
 
             <!-- Measure and precision input -->
-            <div>X: <input type="number" class="inputMeasure" name="x" id="x">
-                ± <input type="number" class="inputPrecision" name="px" id="px" value="10"> mm</div>
-            <div>Y: <input type="number" class="inputMeasure" name="y" id="y">
-                ± <input type="number" class="inputPrecision" name="py" id="py" value="10"> mm</div>
-            <div>Z: <input type="number" class="inputMeasure" name="z" id="z">
-                ± <input type="number" class="inputPrecision" name="pz" id="pz" value="1"> mm</div>
-            <div> (measure
-                X <input type="checkbox" name="cx" id="cx" checked>,
-                Y <input type="checkbox" name="cy" id="cy" checked>,
+            <div>X: <input type="number" class="inputMeasure" name="x" id="x"> ± <input type="number" class="inputPrecision" name="px"
+                    id="px" value="10"> mm</div>
+            <div>Y: <input type="number" class="inputMeasure" name="y" id="y"> ± <input type="number" class="inputPrecision" name="py"
+                    id="py" value="10"> mm</div>
+            <div>Z: <input type="number" class="inputMeasure" name="z" id="z"> ± <input type="number" class="inputPrecision" name="pz"
+                    id="pz" value="1"> mm</div>
+            <div> (measure X <input type="checkbox" name="cx" id="cx" checked>, Y <input type="checkbox" name="cy" id="cy" checked>,
                 Z <input type="checkbox" name="cz" id="cz" checked>)</div>
             <div><button id="measure" onclick="measure()"><i class="material-icons">search</i> MEASURE</button></div>
 
@@ -71,7 +69,6 @@
 </body>
 
 <script>
-
     function outputToConsole(text) {
         $("#console").val(text + "\n\n" + $("#console").val());
     }
@@ -94,9 +91,9 @@
             "calibrate",
             {},
             function (data) {
-                outputToConsole(data);
+                outputToConsole(data)
             }
-        );
+        )
     }
 
     function measure() {
@@ -117,9 +114,9 @@
                     $("#z").val(data.z)
                     log += " z=" + data.z
                 }
-                outputToConsole(log + ".");
+                outputToConsole(log + ".")
             }
-        );
+        )
     }
 
     function upload() {
@@ -131,10 +128,12 @@
                 mat: $("#material").val(), vol: $("#volume").val(), loc: $("#location").val()
             },
             function (data) {
-                outputToConsole(data);
+                console.log(data)
+                outputToConsole(data)
             }
-        );
+        )
     }
+
 </script>
 
 </html>
