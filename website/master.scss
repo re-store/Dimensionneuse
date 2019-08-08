@@ -1,3 +1,6 @@
+$green_light: #c2fabd;
+$green_dark: #669461;
+
 @font-face {
   font-family: "Material Icons";
   font-style: normal;
@@ -37,7 +40,7 @@
 
 a,
 a:visited {
-  color: #669461 !important;
+  color: $green_dark !important;
   text-decoration: none;
 }
 
@@ -56,7 +59,7 @@ header {
   display: flex;
   flex-flow: column;
   align-items: center;
-  color: #669461;
+  color: $green_dark;
 
   #title {
     font-size: 48px;
