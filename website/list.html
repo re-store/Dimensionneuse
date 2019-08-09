@@ -50,14 +50,13 @@
             "fetch",
             {},
             function (data) {
-                console.log(data);
                 $(".result").remove()
                 if (typeof data == "string") {
                     // Display error
                 } else {
                     let nb = 0
                     data.rows.forEach(elem => {
-                        let id = `<td>${elem.id}</td>`
+                        let id = `<td id="id${nb}">${elem.id}</td>`
                         let x = `<td class="measuretd"><input type="number" id="x${nb}" class="measure" value="${elem.x}"></td>`
                         let px = `<td>± <input type="number" id="px${nb}" class="precision" value="${elem.px}"></td>`
                         let y = `<td class="measuretd"><input type="number" id="y${nb}" class="measure" value="${elem.y}"></td>`

@@ -31,7 +31,7 @@ module.exports = {
 
             // Parameters validity test
             if (!validate(measure, precision, material, volume, location)) {
-                reject("Upload failed : incorrect parameters.")
+                reject("Upload failed! (Incorrect parameters)")
             }
 
             plankID(measure, precision, material, volume, location) // 1st promise : get plank ID
@@ -48,9 +48,9 @@ module.exports = {
                     pool
                         .query(query2) // 2nd promise : INSERT query
                         .then(res => resolve("Upload successful, ID " + id))
-                        .catch(e => reject(e))
+                        .catch(e => reject("Upload failed! (Couldn't insert in the db)"))
                 })
-                .catch(e => reject(e))
+                .catch(e => reject("Upload failed! (Couldn't generate ID)"))
 
         })
     },
@@ -60,7 +60,7 @@ module.exports = {
             pool
                 .query(`SELECT * FROM ${tableName}`)
                 .then(res => resolve(res))
-                .catch(e => reject(e))
+                .catch(e => reject("Upload failed! (Couldn't fetch)"))
         })
     }
 }
@@ -118,6 +118,6 @@ function plankID(measure, precision, material, volume, location) {
             .then(res => {
                 resolve(location + '-' + (Number(res.rows[0].count) + 1))
             })
-            .catch(e => reject(e))
+            .catch(e => reject("Couldn't generate plankID."))
     })
 }
