@@ -13,6 +13,7 @@
     "ip": "^1.1.5",
     "jquery": "^3.4.1",
     "material-icons": "^0.3.1",
+    "node-raspistill": "0.0.16",
     "pg": "^7.12.0"
   }
 }

@@ -1,6 +1,8 @@
 /**
  * Interface between the node server and the sensors.
  */
+const Raspistill = require('node-raspistill').Raspistill
+const camera = new Raspistill({ time: 250, outputDir: './measure' })
 
 module.exports = {
     /**
@@ -10,7 +12,13 @@ module.exports = {
      */
     calibrate: function () {
         return new Promise((resolve, reject) => {
-            resolve("Calibrated.")
+            camera.takePhoto('calib')
+                .then((photo) => {
+                    resolve("Took a photo.")
+                })
+                .catch((error) => {
+                    reject("Couldn't take a photo.")
+                })
         })
     },
 
@@ -25,7 +33,13 @@ module.exports = {
     measure: function (x, y, z) {
         return new Promise((resolve, reject) => {
             let dim = { "x": 100, "y": 50, "z": 10 }
-            resolve(dim)
+	    camera.takePhoto('measure')
+                .then((photo) => {
+                    resolve(dim)
+                })
+                .catch((error) => {
+                    reject("Couldn't take a photo.")
+                })
         })
     }
 }

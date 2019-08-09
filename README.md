@@ -8,19 +8,7 @@ It is being developped by WAO and WoMa.
 The idea behind the Dimensionneuse is to create a device that would allow us to reference wasted materials. 
 Our goal is to encourage reusability of materials as far as architecture, design, and Building Information Modeling (BIM) are concerned.
 
-## How to install
-
-Clone this repo and install the dependencies :
-
-```
-npm install
-```
-
-Then, launch the dimensionneuse with :
-
-```
-node main.js
-```
+The repo is a template : you should customize it to match your hardware. If you want a static or mobile dimensionneuse, you may use different sensors.
 
 ## Modularity
 
@@ -39,6 +27,38 @@ This project is conceived in a modular way : the website, the measuring process 
 
 Edit `measure/main.js` and `database/main.js` to use your sensors and your database.
 If you want to start from scratch, you can configure the dimensionneuse using [the wiki](https://github.com/Re-Store/Dimensionneuse/wiki).
+
+## How to install
+
+Clone this repo and install the dependencies :
+
+```
+npm install
+```
+
+Then, launch the dimensionneuse with :
+
+```
+node main.js
+```
+
+If you want the dimensionneuse to start on boot, follow [this tutorial](https://medium.com/@simon_prickett/writing-a-systemd-service-in-node-js-on-raspberry-pi-be88d9bc2e8d) with the following service :
+
+```
+[Unit]
+Description=Dimensionneuse Service
+After=network.target
+
+[Service]
+WorkingDirectory=/path/to/dimensionneuse
+ExecStart=/usr/bin/node main.js
+Restart=on-failure
+User=pi
+Environment=PORT=3000
+
+[Install]
+WantedBy=multi-user.target
+```
 
 ## License
 
