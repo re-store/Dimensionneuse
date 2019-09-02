@@ -190,14 +190,18 @@ function plankID(measure, precision, material, volume, location) {
     return new Promise((resolve, reject) => {
         // SQL query and parameters
         const query = {
-            text: `SELECT COUNT(*) FROM ${tableName} WHERE location=$1`,
+            text: `SELECT ID FROM ${tableName} WHERE location=$1`,
             values: [location]
         }
 
         pool
             .query(query)
             .then(res => {
-                resolve(location + '-' + (Number(res.rows[0].count) + 1))
+                var nb = res.rows[0].count
+                while (res.rows.includes(`${location}-${nb}`)) {
+                    nb++
+                }
+                resolve(`${location}-${nb}`)
             })
             .catch(e => reject("Couldn't generate plankID."))
     })
