@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="master.min.css">
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="util.js"></script>
 </head>
 
 <body>
@@ -21,8 +22,70 @@
     </header>
 
     <div class="card">
+        <div class="center">
+            <input type="checkbox" id="available" checked> Available
+            <input type="checkbox" id="removed"> Removed
+            <i id="expandIcon" class="material-icons" onclick="hide()">expand_less</i>
+        </div>
+        <div class="filterItem">
+            Location <select id="location">
+                <option value="ANY" selected>——— Any ———</option>
+            </select>
+        </div>
+        <div class="filterItem">
+            X <select id="x">
+                <option value="ANY" selected>——— Any ———</option>
+                <option value="MT">More than</option>
+                <option value="LT">Less than</option>
+                <option value="BTW">Between</option>
+            </select> <input type="number" id="x-num" hidden> <span id="x-and" hidden>and</span> <input type="number"
+                id="x-num2" hidden>
+        </div>
+        <div class="filterItem">
+            Y <select id="y">
+                <option value="ANY" selected>——— Any ———</option>
+                <option value="MT">More than</option>
+                <option value="LT">Less than</option>
+                <option value="BTW">Between</option>
+            </select> <input type="number" id="y-num" hidden> <span id="y-and" hidden>and</span> <input type="number"
+                id="y-num2" hidden>
+        </div>
+        <div class="filterItem">
+            Z <select id="z">
+                <option value="ANY" selected>——— Any ———</option>
+                <option value="MT">More than</option>
+                <option value="LT">Less than</option>
+                <option value="BTW">Between</option>
+            </select> <input type="number" id="z-num" hidden> <span id="z-and" hidden>and</span> <input type="number"
+                id="z-num2" hidden>
+        </div>
+        <div class="filterItem">
+            Material <select id="material">
+                <option value="ANY" selected>——— Any ———</option>
+            </select>
+        </div>
+        <div class="filterItem">
+            Volume <select id="volume">
+                <option value="ANY" selected>——— Any ———</option>
+            </select>
+        </div>
+        <div class="filterItem">
+            Order by <select id="order">
+                <option value="ASC">ascending</option>
+                <option value="DESC">descending</option>
+            </select> <select id="by">
+                <option value="ID">ID</option>
+                <option value="X">X</option>
+                <option value="Y">Y</option>
+                <option value="Z">Z</option>
+                <option value="LOC">location</option>
+            </select>
+        </div>
         <div><button id="refresh" onclick="fetch()"><i class="material-icons">refresh</i> FETCH</button></div>
+        <div id="errorLog" hidden></div>
+    </div>
 
+    <div class="card">
         <table id="results">
             <tbody>
                 <tr>
@@ -45,15 +108,77 @@
 </body>
 
 <script>
+
+    populateSelectWithJSON("location", "config/locations.json");
+    populateSelectWithJSON("volume", "config/volumes.json");
+    populateSelectWithJSON("material", "config/materials.json");
+
+    const HIDE_TIME = 250
+
+    function hide() {
+
+        if (hidden) {
+            $(".filterItem").show(HIDE_TIME)
+            $("#expandIcon").html("expand_less")
+        } else {
+            $(".filterItem").hide(HIDE_TIME)
+            $("#expandIcon").html("expand_more")
+        }
+        hidden = !hidden
+    }
+
+    var selects = ["x", "y", "z"]
+
+    selects.forEach(element => {
+        $("#" + element).on("change", function () {
+
+            switch ($("#" + element).val()) {
+                case "MT":
+                case "LT":
+                    $("#" + element + "-num").show(HIDE_TIME)
+                    $("#" + element + "-and").hide(HIDE_TIME)
+                    $("#" + element + "-num2").hide(HIDE_TIME)
+                    break;
+                case "BTW":
+                    $("#" + element + "-num").show(HIDE_TIME)
+                    $("#" + element + "-and").show(HIDE_TIME)
+                    $("#" + element + "-num2").show(HIDE_TIME)
+                    break;
+                default:
+                    $("#" + element + "-num").hide(HIDE_TIME)
+                    $("#" + element + "-and").hide(HIDE_TIME)
+                    $("#" + element + "-num2").hide(HIDE_TIME)
+                    break;
+            }
+
+        })
+    });
+
+
     function fetch() {
         $.get(
             "fetch",
-            {},
+            {
+                available: $("#available").is(":checked"), removed: $("#removed").is(":checked"),
+                location: $("#location").val(),
+                x: $("#x").val(), xNum: $("#x-num").val(), xNum2: $("#x-num2").val(),
+                y: $("#y").val(), yNum: $("#y-num").val(), yNum2: $("#y-num2").val(),
+                z: $("#z").val(), zNum: $("#z-num").val(), zNum2: $("#z-num2").val(),
+                material: $("#material").val(),
+                volume: $("#volume").val(),
+                order: $("#order").val(),
+                by: $("#by").val()
+            },
             function (data) {
                 $(".result").remove()
                 if (typeof data == "string") {
-                    // Display error
+                    $("#errorLog").html(data)
+                    $("#errorLog").show()
                 } else {
+                    $("#errorLog").hide()
+                    if (!hidden)
+                        hide()
+
                     let nb = 0
                     data.rows.forEach(elem => {
                         let id = `<td id="id${nb}">${elem.id}</td>`
@@ -75,6 +200,8 @@
             }
         )
     }
+
+    var hidden = false
 
 </script>
 

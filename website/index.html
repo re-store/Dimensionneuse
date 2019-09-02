@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="master.min.css">
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="util.js"></script>
     <link rel="manifest" href="manifest.json">
 </head>
 
@@ -74,15 +75,6 @@
         $("#console").val(text + "\n\n" + $("#console").val());
     }
 
-    function populateSelectWithJSON(id, url) {
-        let select = $("#" + id);
-        $.getJSON(url, function (data) {
-            $.each(data, function (key, entry) {
-                select.append($('<option></option>').attr('value', entry.code).text(entry.name));
-            })
-        });
-    }
-
     populateSelectWithJSON("location", "config/locations.json");
     populateSelectWithJSON("material", "config/materials.json");
     populateSelectWithJSON("volume", "config/volumes.json");
@@ -100,7 +92,7 @@
     function measure() {
         $.get(
             "measure",
-            { x: $("#cx").val(), y: $("#cy").val(), z: $("#cz").val() },
+            { x: $("#cx").is(":checked"), y: $("#cy").is(":checked"), z: $("#cz").is(":checked") },
             function (data) {
                 let log = "Measured"
                 if (data.x !== false) {

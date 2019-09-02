@@ -151,6 +151,34 @@ header {
       background-color: #ccc;
     }
   }
+
+  .filterItem {
+    display: flex;
+    align-self: flex-start;
+    flex-flow: row;
+    align-items: center;
+    width: inherit;
+
+    select,
+    input {
+      margin: 0 8px;
+    }
+
+    input {
+      width: 48px;
+    }
+  }
+
+  .center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    * {
+      margin: 0 16px;
+    }
+  }
 }
 
 #container {

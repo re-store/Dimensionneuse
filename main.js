@@ -49,7 +49,12 @@ app.post('/upload', (req, res) => {
 })
 
 app.get('/fetch', function (req, res) {
-    database.fetch()
+    database.fetch(req.query.available, req.query.removed, req.query.location,
+        [req.query.x, req.query.xNum, req.query.xNum2],
+        [req.query.y, req.query.yNum, req.query.yNum2],
+        [req.query.z, req.query.zNum, req.query.zNum2],
+        req.query.material, req.query.volume,
+        req.query.order, req.query.by)
         .then(value => {
             res.send(value)
         })

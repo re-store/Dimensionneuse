@@ -55,12 +55,93 @@ module.exports = {
         })
     },
 
-    fetch: function () {
+    /**
+     * Returns the filtered database items.
+     * 
+     * @param {Boolean} available Fetch available items
+     * @param {Boolean} removed Fetch removed items
+     * @param {String} location Wanted location ("ANY" for all)
+     * @param {Array} x ["ANY" / "LT"(<) / "MT"(>) / "BTW"(<&>), first number, second number]
+     * @param {Array} y Same as x (["LT", 50] means y ≤ 50)
+     * @param {Array} z Same as x (["BTW", 40, 100] means 40 ≤ z ≤ 100)
+     * @param {String} material Wanted material ("ANY" for all)
+     * @param {String} volume Wanted volume ("ANY" for all)
+     * @param {String} order "ASC" / "DESC"
+     * @param {String} by The field used to order results
+     */
+    fetch: function (available, removed, location, x, y, z, material, volume, order, by) {
+
+        // Computes the condition
+        var query = `SELECT * FROM ${tableName}`
+        var cond = 'WHERE '
+        var conditions = []
+        var bad = false
+        var order = `ORDER BY ${by} ${order}`
+
+        // Alive filter
+        if (available === "true" && removed === "false") {
+            conditions.push("alive = true")
+        } else if (available === "false" && removed === "true") {
+            conditions.push("alive = false")
+        } else if (available === "false" && removed === "false") {
+            bad = true
+        }
+
+        // Location, volume, material
+        if (location != "ANY") {
+            conditions.push("location = " + location)
+        }
+        if (volume != "ANY") {
+            conditions.push("volume = " + volume)
+        }
+        if (material != "ANY") {
+            conditions.push("material = " + material)
+        }
+
+        // Size filtering
+        var dim = [x, y, z]
+        var variables = ["x", "y", "z"]
+        for (let i = 0; i < dim.length; i++) {
+            switch (dim[i][0]) {
+                case "LT":
+                    conditions.push(variables[i] + " <= " + dim[i][1])
+                    if (dim[i][1].length == 0) {
+                        bad = true
+                    }
+                    break;
+                case "MT":
+                    conditions.push(variables[i] + " >= " + dim[i][1])
+                    if (dim[i][1].length == 0) {
+                        bad = true
+                    }
+                    break;
+                case "BTW":
+                    conditions.push(variables[i] + " >= " + dim[i][1])
+                    conditions.push(variables[i] + " <= " + dim[i][2])
+                    if (dim[i][1].length == 0 || dim[i][2].length == 0) {
+                        bad = true
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        // Builds the condition
+        if (conditions.length == 0) {
+            cond = ""
+        } else {
+            cond = "WHERE " + conditions.join(" AND ")
+        }
+
         return new Promise((resolve, reject) => {
+            if (bad) {
+                reject("Wrong filters.")
+            }
             pool
                 .query(`SELECT * FROM ${tableName}`)
                 .then(res => resolve(res))
-                .catch(e => reject("Upload failed! (Couldn't fetch)"))
+                .catch(e => reject("Upload failed! (" + e + ")"))
         })
     }
 }
