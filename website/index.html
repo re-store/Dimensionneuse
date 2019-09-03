@@ -26,40 +26,47 @@
 
         <!-- Control card -->
         <div class="card">
+            <form action="javascript:hide()">
+                <!-- Location, material & volume selection -->
+                <div>Location: <select name="location" id="location">
+                        <option selected="true" disabled>---</option>
+                    </select></div>
+                <div>Material: <select name="material" id="material">
+                        <option selected="true" disabled>---</option>
+                    </select></div>
+                <div>Volume: <select name="volume" id="volume">
+                        <option selected="true" disabled>---</option>
+                    </select></div>
 
-            <!-- Location, material & volume selection -->
-            <div>Location: <select name="location" id="location">
-                    <option selected="true" disabled>---</option>
-                </select></div>
-            <div>Material: <select name="material" id="material">
-                    <option selected="true" disabled>---</option>
-                </select></div>
-            <div>Volume: <select name="volume" id="volume">
-                    <option selected="true" disabled>---</option>
-                </select></div>
+                <div class="separator"></div>
 
-            <div class="separator"></div>
+                <!-- Calibrate button -->
+                <div>
+                    <button id="calibrate" type="button"><i class="material-icons">settings</i>
+                        CALIBRATE</button>
+                </div>
 
-            <!-- Calibrate button -->
-            <div>
-                <button id="calib" onclick="calibrate()"><i class="material-icons">settings</i> CALIBRATE</button>
-            </div>
+                <!-- Measure and precision input -->
+                <div>X: <input type="number" class="inputMeasure" name="x" id="x"> ± <input type="number"
+                        class="inputPrecision" name="px" id="px" value="10"> mm</div>
+                <div>Y: <input type="number" class="inputMeasure" name="y" id="y"> ± <input type="number"
+                        class="inputPrecision" name="py" id="py" value="10"> mm</div>
+                <div>Z: <input type="number" class="inputMeasure" name="z" id="z"> ± <input type="number"
+                        class="inputPrecision" name="pz" id="pz" value="1"> mm</div>
+                <input type="submit" hidden>
+                <div> (measure X <input type="checkbox" name="cx" id="cx" checked>, Y <input type="checkbox" name="cy"
+                        id="cy" checked>,
+                    Z <input type="checkbox" name="cz" id="cz" checked>)</div>
+                <div><button id="measure" type="button"><i class="material-icons">search</i>
+                        MEASURE</button>
+                </div>
 
-            <!-- Measure and precision input -->
-            <div>X: <input type="number" class="inputMeasure" name="x" id="x"> ± <input type="number" class="inputPrecision" name="px"
-                    id="px" value="10"> mm</div>
-            <div>Y: <input type="number" class="inputMeasure" name="y" id="y"> ± <input type="number" class="inputPrecision" name="py"
-                    id="py" value="10"> mm</div>
-            <div>Z: <input type="number" class="inputMeasure" name="z" id="z"> ± <input type="number" class="inputPrecision" name="pz"
-                    id="pz" value="1"> mm</div>
-            <div> (measure X <input type="checkbox" name="cx" id="cx" checked>, Y <input type="checkbox" name="cy" id="cy" checked>,
-                Z <input type="checkbox" name="cz" id="cz" checked>)</div>
-            <div><button id="measure" onclick="measure()"><i class="material-icons">search</i> MEASURE</button></div>
+                <div class="separator"></div>
 
-            <div class="separator"></div>
-
-            <!-- Upload button -->
-            <div><button id="upload" onclick="upload()"><i class="material-icons">publish</i> UPLOAD</button></div>
+                <!-- Upload button -->
+                <div><button id="upload" type="button"><i class="material-icons">publish</i>
+                        UPLOAD</button></div>
+            </form>
         </div>
 
         <!-- Console card -->
@@ -79,54 +86,59 @@
     populateSelectWithJSON("material", "config/materials.json");
     populateSelectWithJSON("volume", "config/volumes.json");
 
-    function calibrate() {
-        $.post(
-            "calibrate",
-            {},
-            function (data) {
-                outputToConsole(data)
-            }
-        )
+    function hide() {
+        $(document.activeElement).filter(':input:focus').blur()
     }
 
-    function measure() {
-        $.get(
-            "measure",
-            { x: $("#cx").is(":checked"), y: $("#cy").is(":checked"), z: $("#cz").is(":checked") },
-            function (data) {
-                let log = "Measured"
-                if (data.x !== false) {
-                    $("#x").val(data.x)
-                    log += " x=" + data.x
+    $(function () {
+        $("#calibrate").click(function () {
+            $.post(
+                "calibrate",
+                {},
+                function (data) {
+                    outputToConsole(data)
                 }
-                if (data.y !== false) {
-                    $("#y").val(data.y)
-                    log += " y=" + data.y
-                }
-                if (data.z !== false) {
-                    $("#z").val(data.z)
-                    log += " z=" + data.z
-                }
-                outputToConsole(log + ".")
-            }
-        )
-    }
+            )
+        })
 
-    function upload() {
-        $.post(
-            "upload",
-            {
-                measure: [$("#x").val(), $("#y").val(), $("#z").val()],
-                precision: [$("#px").val(), $("#py").val(), $("#pz").val()],
-                mat: $("#material").val(), vol: $("#volume").val(), loc: $("#location").val()
-            },
-            function (data) {
-                console.log(data)
-                outputToConsole(data)
-            }
-        )
-    }
+        $("#measure").click(function () {
+            $.get(
+                "measure",
+                { x: $("#cx").is(":checked"), y: $("#cy").is(":checked"), z: $("#cz").is(":checked") },
+                function (data) {
+                    let log = "Measured"
+                    if (data.x !== false) {
+                        $("#x").val(data.x)
+                        log += " x=" + data.x
+                    }
+                    if (data.y !== false) {
+                        $("#y").val(data.y)
+                        log += " y=" + data.y
+                    }
+                    if (data.z !== false) {
+                        $("#z").val(data.z)
+                        log += " z=" + data.z
+                    }
+                    outputToConsole(log + ".")
+                }
+            )
+        })
 
+        $("#upload").click(function () {
+            $.post(
+                "upload",
+                {
+                    measure: [$("#x").val(), $("#y").val(), $("#z").val()],
+                    precision: [$("#px").val(), $("#py").val(), $("#pz").val()],
+                    mat: $("#material").val(), vol: $("#volume").val(), loc: $("#location").val()
+                },
+                function (data) {
+                    console.log(data)
+                    outputToConsole(data)
+                }
+            )
+        })
+    })
 </script>
 
 </html>
