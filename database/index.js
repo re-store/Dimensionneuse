@@ -102,22 +102,23 @@ module.exports = {
         var dim = [x, y, z]
         var variables = ["x", "y", "z"]
         for (let i = 0; i < dim.length; i++) {
+            var v = variables[i]
             switch (dim[i][0]) {
                 case "LT":
-                    conditions.push(variables[i] + " <= " + dim[i][1])
+                    conditions.push(`${v} - p${v} <= ${dim[i][1]}`)
                     if (dim[i][1].length == 0) {
                         bad = true
                     }
                     break;
                 case "MT":
-                    conditions.push(variables[i] + " >= " + dim[i][1])
+                    conditions.push(`${v} + p${v} >= ${dim[i][1]}`)
                     if (dim[i][1].length == 0) {
                         bad = true
                     }
                     break;
                 case "BTW":
-                    conditions.push(variables[i] + " >= " + dim[i][1])
-                    conditions.push(variables[i] + " <= " + dim[i][2])
+                    conditions.push(`${v} + p${v} >= ${dim[i][1]}`)
+                    conditions.push(`${v} - p${v} <= ${dim[i][2]}`)
                     if (dim[i][1].length == 0 || dim[i][2].length == 0) {
                         bad = true
                     }
