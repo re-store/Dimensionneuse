@@ -91,11 +91,8 @@
                 <tr>
                     <th>ID</th>
                     <th>x</th>
-                    <th></th>
                     <th>y</th>
-                    <th></th>
                     <th>z</th>
-                    <th></th>
                     <th>Material</th>
                     <th>Volume</th>
                     <th>Location</th>
@@ -183,9 +180,9 @@
                     let nb = 0
                     data.rows.forEach(elem => {
                         let id = `<td id="id${nb}">${elem.id}</td>`
-                        let x = `${elem.x} ± ${elem.px}`
-                        let y = `${elem.y} ± ${elem.py}`
-                        let z = `${elem.z} ± ${elem.pz}`
+                        let x = `<td>${elem.x} ± ${elem.px}</td>`
+                        let y = `<td>${elem.y} ± ${elem.py}</td>`
+                        let z = `<td>${elem.z} ± ${elem.pz}</td>`
                         let mat = `<td>${elem.material}</td>`
                         let vol = `<td>${elem.volume}</td>`
                         let loc = `<td>${elem.location}</td>`
