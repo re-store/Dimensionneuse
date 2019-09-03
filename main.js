@@ -72,3 +72,13 @@ app.post('/edit', (req, res) => {
             res.send(value)
         })
 })
+
+app.post('/del', (req, res) => {
+    database.del(req.body.id)
+        .then(value => {
+            res.send(value)
+        })
+        .catch(value => {
+            res.send(value)
+        })
+})

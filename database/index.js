@@ -23,7 +23,7 @@ module.exports = {
      * @param {Array} precision [x, y, z] precision in mm.
      * @param {String} material
      * @param {String} volume 
-     * @param {String} location 
+     * @param {String} location
      * @returns {Promise} Operation promise.
      */
     upload: function (measure, precision, material, volume, location) {
@@ -68,6 +68,7 @@ module.exports = {
      * @param {String} volume Wanted volume ("ANY" for all)
      * @param {String} order "ASC" / "DESC"
      * @param {String} by The field used to order results
+     * @returns {Promise} Operation promise.
      */
     fetch: function (available, removed, location, x, y, z, material, volume, order, by) {
 
@@ -146,6 +147,13 @@ module.exports = {
         })
     },
 
+    /**
+     * Changes the availability (=alive) of an item.
+     * 
+     * @param {String} id ID of the item
+     * @param {Boolean} alive New availability
+     * @returns {Promise} Operation promise.
+     */
     edit: function(id, alive) {
         return new Promise((resolve, reject) => {
             pool
@@ -153,7 +161,22 @@ module.exports = {
                 .then(res => resolve(res))
                 .catch(e => reject("Edit failed! (" + e + ")"))
         })
+    },
+
+    /**
+     * Deletes an item.
+     * 
+     * @param {String} id 
+     */
+    del: function(id) {
+        return new Promise((resolve, reject) => {
+            pool
+                .query(`DELETE FROM ${tableName} WHERE id = '${id}'`)
+                .then(res => resolve(res))
+                .catch(e => reject("Delete failed! (" + e + ")"))
+        })
     }
+
 }
 
 /**
@@ -207,12 +230,12 @@ function plankID(measure, precision, material, volume, location) {
         pool
             .query(query)
             .then(res => {
-                var nb = res.rows[0].count
+                var nb = res.rows.count
                 while (res.rows.includes(`${location}-${nb}`)) {
                     nb++
                 }
                 resolve(`${location}-${nb}`)
             })
-            .catch(e => reject("Couldn't generate plankID."))
+            .catch(e => reject("Couldn't generate plank ID."))
     })
 }

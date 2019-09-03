@@ -183,20 +183,21 @@
                     let nb = 0
                     data.rows.forEach(elem => {
                         let id = `<td id="id${nb}">${elem.id}</td>`
-                        let x = `<td class="measuretd"><input type="number" id="x${nb}" class="measure" value="${elem.x}"></td>`
-                        let px = `<td>± <input type="number" id="px${nb}" class="precision" value="${elem.px}"></td>`
-                        let y = `<td class="measuretd"><input type="number" id="y${nb}" class="measure" value="${elem.y}"></td>`
-                        let py = `<td>± <input type="number" id="py${nb}" class="precision" value="${elem.py}"></td>`
-                        let z = `<td class="measuretd"><input type="number" id="z${nb}" class="measure" value="${elem.z}"></td>`
-                        let pz = `<td>± <input type="number" id="pz${nb}" class="precision" value="${elem.pz}"></td>`
+                        let x = `${elem.x} ± ${elem.px}`
+                        let y = `${elem.y} ± ${elem.py}`
+                        let z = `${elem.z} ± ${elem.pz}`
                         let mat = `<td>${elem.material}</td>`
                         let vol = `<td>${elem.volume}</td>`
                         let loc = `<td>${elem.location}</td>`
                         let iconStatus = elem.alive ? "done" : "clear"
                         let pub = `<td class="icontd"><i class="material-icons grey">${iconStatus}</i></td>`
-                        let iconAction = elem.alive ? "delete" : "restore_from_trash"
-                        let del = `<td class="icontd"><i class="material-icons" onclick="del(${elem.id}, ${elem.alive})">${iconAction}</i></td>`
-                        let content = id + x + px + y + py + z + pz + mat + vol + loc + pub + del
+                        let del = ''
+                        if (elem.alive) {
+                            del = `<td class="icontd"><i class="material-icons" onclick="edit('${elem.id}', true)">delete</i></td>`
+                        } else {
+                            del = `<td class="icontd"><i class="material-icons" onclick="del('${elem.id}')">delete</i><i class="material-icons" onclick="edit('${elem.id}', true)">restore_from_trash</i></td>`
+                        }
+                        let content = id + x + y + z + mat + vol + loc + pub + del
                         $('#results > tbody:last-child').append(`<tr class="result" id="result${nb}">${content}</tr>`)
                     })
                 }
@@ -204,7 +205,13 @@
         )
     }
 
-    function del(who, alive) {
+    /**
+     * Changes the availability of an item.
+     * 
+     * @param {String} who ID of the item. 
+     * @param {Boolean} alive Current availability. 
+     */
+    function edit(who, alive) {
         $.post(
             "edit",
             {
@@ -215,6 +222,20 @@
                 fetch()
             }
         )
+    }
+
+    function del(who) {
+        if (confirm("Delete this item ? This action cannot be undone.")) {
+            $.post(
+                "del",
+                {
+                    id: who
+                },
+                function (data) {
+                    fetch()
+                }
+            )
+        }
     }
 
 </script>
