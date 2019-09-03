@@ -107,6 +107,8 @@
                 { x: $("#cx").is(":checked"), y: $("#cy").is(":checked"), z: $("#cz").is(":checked") },
                 function (data) {
                     let log = "Measured"
+                    console.log(data)
+                    
                     if (data.x !== false) {
                         $("#x").val(data.x)
                         log += " x=" + data.x

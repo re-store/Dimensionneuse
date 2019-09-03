@@ -3,6 +3,7 @@
  */
 const Raspistill = require('node-raspistill').Raspistill
 const camera = new Raspistill({ time: 250, outputDir: './measure' })
+const spawn = require("child_process").spawn;
 
 module.exports = {
     /**
@@ -14,7 +15,21 @@ module.exports = {
         return new Promise((resolve, reject) => {
             camera.takePhoto('calib')
                 .then((photo) => {
-                    resolve("Took a photo.")
+                    new Promise((resolve, reject) => {
+                        const pyprog = spawn('python', ['./measure/calibration.py']);
+
+                        pyprog.stdout.on('data', function (data) {
+                            resolve(data);
+                        });
+
+                        pyprog.stderr.on('data', (data) => {
+                            reject(data);
+                        });
+                    }).then(() => {
+                        resolve("Calibrated.")
+                    }).catch((e) => {
+                        reject(e)
+                    })
                 })
                 .catch((error) => {
                     reject("Couldn't take a photo.")
@@ -32,10 +47,24 @@ module.exports = {
      */
     measure: function (x, y, z) {
         return new Promise((resolve, reject) => {
-            let dim = { "x": 100, "y": 50, "z": 10 }
-	    camera.takePhoto('measure')
+            camera.takePhoto('measure')
                 .then((photo) => {
-                    resolve(dim)
+                    new Promise((resolve, reject) => {
+                        const pyprog = spawn('python', ['./measure/measure.py', x, y, z]);
+
+                        pyprog.stdout.on('data', function (data) {
+                            let measure = JSON.parse(data);
+                            resolve(measure);
+                        });
+
+                        pyprog.stderr.on('data', (data) => {
+                            reject(data);
+                        });
+                    }).then(() => {
+                        resolve("Calibrated.")
+                    }).catch((e) => {
+                        reject(e)
+                    })
                 })
                 .catch((error) => {
                     reject("Couldn't take a photo.")

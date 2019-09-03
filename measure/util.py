@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import sys
 
 def findCheckerboard(gray, size):
     """Returns the corners of the checkerboard."""
@@ -10,6 +11,7 @@ def findCheckerboard(gray, size):
         return cv2.cornerSubPix(gray, corners, (11, 11), (-1, -1), criteria)
     else:
         print("Couldn't find the checkerboard. Make sure that CHK_SIZE is right (inner corners), and that the image is correctly downsampled.")
+        sys.stderr.flush()
         raise RuntimeError
 
 

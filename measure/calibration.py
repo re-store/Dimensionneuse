@@ -4,10 +4,11 @@ import numpy as np
 import pickle
 import cv2
 import util
+import sys
 
 # Parameters
 
-CHK_SIZE = [11, 16]  # Inner corners of the checkerboard
+CHK_SIZE = [11, 16] # Inner corners of the checkerboard
 TILE_SIZE = 50      # Size of a square in mm
 ZOOM = 2            # Number of px per mm after the homography
 RESIZE_RATIO = 0.2  # Downsampling ratio (checkerboard detection)
@@ -80,3 +81,6 @@ configDictionary = {"TILE_SIZE": TILE_SIZE,
 
 with open("config", "wb") as config:
     pickle.dump(configDictionary, config)
+    print("OK")
+    sys.stdout.flush()
+    
