@@ -29,28 +29,29 @@ module.exports = {
     upload: function (measure, precision, material, volume, location) {
         return new Promise((resolve, reject) => {
 
-            // Parameters validity test
             if (!validate(measure, precision, material, volume, location)) {
+                // Parameters aren't valid
                 reject("Upload failed! (Incorrect parameters)")
+            } else {
+                // Parameters are valid
+                plankID(measure, precision, material, volume, location) // 1st promise : get plank ID
+                    .then(id => {
+    
+                        const query2 = {
+                            text: `INSERT INTO ${tableName}(id, x, y, z, px, py, pz, material, volume, location) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
+                            values: [id,
+                                Number(measure[0]), Number(measure[1]), Number(measure[2]),
+                                Number(precision[0]), Number(precision[1]), Number(precision[2]),
+                                material, volume, location]
+                        }
+    
+                        pool
+                            .query(query2) // 2nd promise : INSERT query
+                            .then(res => resolve("Upload successful, ID " + id))
+                            .catch(e => reject("Upload failed! (Couldn't insert in the db)"))
+                    })
+                    .catch(e => reject("Upload failed! (Couldn't generate ID)"))
             }
-
-            plankID(measure, precision, material, volume, location) // 1st promise : get plank ID
-                .then(id => {
-
-                    const query2 = {
-                        text: `INSERT INTO ${tableName}(id, x, y, z, px, py, pz, material, volume, location) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
-                        values: [id,
-                            Number(measure[0]), Number(measure[1]), Number(measure[2]),
-                            Number(precision[0]), Number(precision[1]), Number(precision[2]),
-                            material, volume, location]
-                    }
-
-                    pool
-                        .query(query2) // 2nd promise : INSERT query
-                        .then(res => resolve("Upload successful, ID " + id))
-                        .catch(e => reject("Upload failed! (Couldn't insert in the db)"))
-                })
-                .catch(e => reject("Upload failed! (Couldn't generate ID)"))
 
         })
     },
