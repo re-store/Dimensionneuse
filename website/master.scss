@@ -210,12 +210,20 @@ table {
     padding: 8px;
   }
 
+  input {
+    border: 1px solid #ccc;
+    background-color: #fff;
+  }
+
   tr:nth-child(even) {
     background-color: #eee;
+    input {
+      background-color: #eee;
+    }
   }
 
   .measure {
-    width: 48px;
+    width: 40px;
     text-align: end;
   }
 
@@ -225,7 +233,7 @@ table {
   }
 
   .precision {
-    width: 36px;
+    width: 24px;
   }
 
   .icontd {

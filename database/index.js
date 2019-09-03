@@ -89,13 +89,13 @@ module.exports = {
 
         // Location, volume, material
         if (location != "ANY") {
-            conditions.push("location = " + location)
+            conditions.push(`location = '${location}'`)
         }
         if (volume != "ANY") {
-            conditions.push("volume = " + volume)
+            conditions.push(`volume = '${volume}'`)
         }
         if (material != "ANY") {
-            conditions.push("material = " + material)
+            conditions.push(`material = '${material}'`)
         }
 
         // Size filtering
@@ -136,11 +136,12 @@ module.exports = {
         }
 
         return new Promise((resolve, reject) => {
+            console.log(query + " " + cond + " " + order)
             if (bad) {
                 reject("Wrong filters.")
             }
             pool
-                .query(`SELECT * FROM ${tableName}`)
+                .query(query + " " + cond + " " + order)
                 .then(res => resolve(res))
                 .catch(e => reject("Upload failed! (" + e + ")"))
         })
