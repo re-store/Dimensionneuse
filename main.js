@@ -62,3 +62,13 @@ app.get('/fetch', function (req, res) {
             res.send(value)
         })
 })
+
+app.post('/edit', (req, res) => {
+    database.edit(req.body.id, req.body.to)
+        .then(value => {
+            res.send(value)
+        })
+        .catch(value => {
+            res.send(value)
+        })
+})

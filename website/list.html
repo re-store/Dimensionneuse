@@ -99,7 +99,7 @@
                     <th>Material</th>
                     <th>Volume</th>
                     <th>Location</th>
-                    <th></th>
+                    <th>Available</th>
                     <th></th>
                 </tr>
             </tbody>
@@ -108,6 +108,7 @@
 </body>
 
 <script>
+    var hidden = false
 
     populateSelectWithJSON("location", "config/locations.json");
     populateSelectWithJSON("volume", "config/volumes.json");
@@ -191,8 +192,10 @@
                         let mat = `<td>${elem.material}</td>`
                         let vol = `<td>${elem.volume}</td>`
                         let loc = `<td>${elem.location}</td>`
-                        let pub = `<td class="icontd"><i class="material-icons" onclick="publish(${nb})">publish</i></td>`
-                        let del = `<td class="icontd"><i class="material-icons" onclick="delete(${nb})">delete</i></td>`
+                        let iconStatus = elem.alive ? "done" : "clear"
+                        let pub = `<td class="icontd"><i class="material-icons grey">${iconStatus}</i></td>`
+                        let iconAction = elem.alive ? "delete" : "restore_from_trash"
+                        let del = `<td class="icontd"><i class="material-icons" onclick="del(${elem.id}, ${elem.alive})">${iconAction}</i></td>`
                         let content = id + x + px + y + py + z + pz + mat + vol + loc + pub + del
                         $('#results > tbody:last-child').append(`<tr class="result" id="result${nb}">${content}</tr>`)
                     })
@@ -201,7 +204,18 @@
         )
     }
 
-    var hidden = false
+    function del(who, alive) {
+        $.post(
+            "edit",
+            {
+                id: who,
+                to: !alive
+            },
+            function (data) {
+                fetch()
+            }
+        )
+    }
 
 </script>
 

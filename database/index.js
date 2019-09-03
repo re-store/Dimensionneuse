@@ -136,7 +136,6 @@ module.exports = {
         }
 
         return new Promise((resolve, reject) => {
-            console.log(query + " " + cond + " " + order)
             if (bad) {
                 reject("Wrong filters.")
             }
@@ -144,6 +143,15 @@ module.exports = {
                 .query(query + " " + cond + " " + order)
                 .then(res => resolve(res))
                 .catch(e => reject("Upload failed! (" + e + ")"))
+        })
+    },
+
+    edit: function(id, alive) {
+        return new Promise((resolve, reject) => {
+            pool
+                .query(`UPDATE ${tableName} SET alive = ${alive} WHERE id = '${id}'`)
+                .then(res => resolve(res))
+                .catch(e => reject("Edit failed! (" + e + ")"))
         })
     }
 }
