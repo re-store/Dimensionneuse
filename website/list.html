@@ -98,6 +98,7 @@
                     <th>Location</th>
                     <th>Available</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </tbody>
         </table>
@@ -190,9 +191,9 @@
                         let pub = `<td class="icontd"><i class="material-icons grey">${iconStatus}</i></td>`
                         let del = ''
                         if (elem.alive) {
-                            del = `<td class="icontd"><i class="material-icons" onclick="edit('${elem.id}', true)">delete</i></td>`
+                            del = `<td class="icontd"><i class="material-icons" onclick="edit('${elem.id}', true)">delete</i></td><td></td>`
                         } else {
-                            del = `<td class="icontd"><i class="material-icons" onclick="del('${elem.id}')">delete</i><i class="material-icons" onclick="edit('${elem.id}', false)">restore_from_trash</i></td>`
+                            del = `<td class="icontd"><i class="material-icons" onclick="edit('${elem.id}', false)">restore_from_trash</i></td><td class="icontd"><i class="material-icons" onclick="del('${elem.id}')">delete</i></td>`
                         }
                         let content = id + x + y + z + mat + vol + loc + pub + del
                         $('#results > tbody:last-child').append(`<tr class="result" id="result${nb}">${content}</tr>`)

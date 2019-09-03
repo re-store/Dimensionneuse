@@ -230,7 +230,7 @@ function plankID(measure, precision, material, volume, location) {
         pool
             .query(query)
             .then(res => {
-                var nb = res.rows.count
+                var nb = res.rows.length
                 while (res.rows.includes(`${location}-${nb}`)) {
                     nb++
                 }
