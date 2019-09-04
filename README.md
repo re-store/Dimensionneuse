@@ -39,7 +39,7 @@ npm install
 Then, launch the dimensionneuse with :
 
 ```
-node main.js
+npm start
 ```
 
 If you want the dimensionneuse to start on boot, follow [this tutorial](https://medium.com/@simon_prickett/writing-a-systemd-service-in-node-js-on-raspberry-pi-be88d9bc2e8d) with the following service :
