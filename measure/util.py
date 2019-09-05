@@ -6,9 +6,7 @@ def findCheckerboard(gray, size):
     """Returns the corners of the checkerboard."""
     ret, corners = cv2.findChessboardCorners(gray, (size[1], size[0]), None)
     if ret == True:
-        criteria = (cv2.TERM_CRITERIA_EPS +
-                    cv2.TERM_CRITERIA_MAX_ITER, 30, 0.01)
-        return cv2.cornerSubPix(gray, corners, (11, 11), (-1, -1), criteria)
+        return corners
     else:
         print("Couldn't find the checkerboard. Make sure that CHK_SIZE is right (inner corners), and that the image is correctly downsampled.")
         sys.stderr.flush()

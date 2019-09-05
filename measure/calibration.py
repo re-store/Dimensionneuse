@@ -8,14 +8,14 @@ import sys
 
 # Parameters
 
-CHK_SIZE = [11, 16] # Inner corners of the checkerboard
+CHK_SIZE = [15, 10] # Inner corners of the checkerboard
 TILE_SIZE = 50      # Size of a square in mm
 ZOOM = 2            # Number of px per mm after the homography
-RESIZE_RATIO = 0.2  # Downsampling ratio (checkerboard detection)
+RESIZE_RATIO = 0.6  # Downsampling ratio (checkerboard detection)
 
 # Load the image and create a smaller grayscale version
 
-img = cv2.imread("calib.jpg")
+img = cv2.imread("measure/calib.jpg")
 small_img = cv2.resize(img,
                        (0, 0),  # set fx and fy, not the final size
                        fx=RESIZE_RATIO,
@@ -55,11 +55,11 @@ pts_src = [[corners3[0][0][0] - x, corners3[0][0][1] - y],
            [corners3[-CHK_SIZE[1]][0][0] - x, corners3[-CHK_SIZE[1]][0][1] - y],
            [corners3[-1][0][0] - x, corners3[-1][0][1] - y]]
 
-xD = (CHK_SIZE[0]-1) * TILE_SIZE * ZOOM
-yD = (CHK_SIZE[1]-1) * TILE_SIZE * ZOOM
-pts_dest = [[0, 0],
-            [yD, 0],
-            [0, xD],
+xD = (CHK_SIZE[0]-1.0) * TILE_SIZE * ZOOM
+yD = (CHK_SIZE[1]-1.0) * TILE_SIZE * ZOOM
+pts_dest = [[0.0, 0.0],
+            [yD, 0.0],
+            [0.0, xD],
             [yD, xD]]
 
 h2, status = cv2.findHomography(np.array(pts_src), np.array(pts_dest))
@@ -79,8 +79,8 @@ configDictionary = {"TILE_SIZE": TILE_SIZE,
                     "xD": xD,
                     "yD": yD}
 
-with open("config", "wb") as config:
+with open("measure/config", "wb") as config:
     pickle.dump(configDictionary, config)
-    print("OK")
+    print("Calibrated.")
     sys.stdout.flush()
     

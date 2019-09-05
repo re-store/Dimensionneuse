@@ -2,7 +2,7 @@
  * Interface between the node server and the sensors.
  */
 const Raspistill = require('node-raspistill').Raspistill
-const camera = new Raspistill({ time: 250, outputDir: './measure' })
+const camera = new Raspistill({ time: 200, outputDir: './measure' })
 const spawn = require("child_process").spawn;
 
 module.exports = {
@@ -25,8 +25,8 @@ module.exports = {
                         pyprog.stderr.on('data', (data) => {
                             reject(data);
                         });
-                    }).then(() => {
-                        resolve("Calibrated.")
+                    }).then((data) => {
+                        resolve(data)
                     }).catch((e) => {
                         reject(e)
                     })
@@ -50,18 +50,18 @@ module.exports = {
             camera.takePhoto('measure')
                 .then((photo) => {
                     new Promise((resolve, reject) => {
-                        const pyprog = spawn('python', ['./measure/measure.py', x, y, z]);
+                        const pyprog = spawn('python', ['./measure/measure.py', x, y, z])
 
                         pyprog.stdout.on('data', function (data) {
-                            let measure = JSON.parse(data);
-                            resolve(measure);
-                        });
+                            var jsonMeasure = JSON.parse(data)
+                            resolve(jsonMeasure)
+                        })
 
                         pyprog.stderr.on('data', (data) => {
-                            reject(data);
-                        });
-                    }).then(() => {
-                        resolve("Calibrated.")
+                            reject(data)
+                        })
+                    }).then((data) => {
+                        resolve(data)
                     }).catch((e) => {
                         reject(e)
                     })
