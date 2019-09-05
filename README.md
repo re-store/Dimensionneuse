@@ -3,7 +3,7 @@
 ## What is it ?
 
 La Dimensionneuse is a device which can be used to measure and categorize random materials. 
-It is being developped by WAO and WoMa. 
+It is being developped by WAO, in partnership with Re-Store and WoMa. 
 
 The idea behind the Dimensionneuse is to create a device that would allow us to reference wasted materials. 
 Our goal is to encourage reusability of materials as far as architecture, design, and Building Information Modeling (BIM) are concerned.
