@@ -11,7 +11,7 @@ import sys
 CHK_SIZE = [15, 10] # Inner corners of the checkerboard
 TILE_SIZE = 50      # Size of a square in mm
 ZOOM = 2            # Number of px per mm after the homography
-RESIZE_RATIO = 0.6  # Downsampling ratio (checkerboard detection)
+RESIZE_RATIO = 0.3  # Downsampling ratio (checkerboard detection)
 
 # Load the image and create a smaller grayscale version
 
@@ -26,6 +26,11 @@ gray = cv2.cvtColor(small_img, cv2.COLOR_BGR2GRAY)
 # Find the checkerboard
 
 corners2 = util.findCheckerboard(gray, CHK_SIZE) / RESIZE_RATIO
+
+img3 = img.copy()
+
+cv2.drawChessboardCorners(img3, (CHK_SIZE[1], CHK_SIZE[0]), corners2, True)
+cv2.imwrite('measure/grid.jpg', img3)
 
 # Find undistortion parameters
 

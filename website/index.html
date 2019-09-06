@@ -92,6 +92,7 @@
 
     $(function () {
         $("#calibrate").click(function () {
+	    outputToConsole("Calibrating...")
             $.post(
                 "calibrate",
                 {},
@@ -102,25 +103,32 @@
         })
 
         $("#measure").click(function () {
+	    outputToConsole("Measuring...")
             $.get(
                 "measure",
                 { x: $("#cx").is(":checked"), y: $("#cy").is(":checked"), z: $("#cz").is(":checked") },
                 function (data) {
-                    let log = "Measured"
                     
-                    if ('x' in data) {
-                        $("#x").val(data.x)
-                        log += " x=" + data.x
-                    }
-                    if ('y' in data) {
-                        $("#y").val(data.y)
-                        log += " y=" + data.y
-                    }
-                    if ('z' in data) {
-                        $("#z").val(data.z)
-                        log += " z=" + data.z
-                    }
-                    outputToConsole(log + ".")
+                    console.log(typeof data)
+
+		    if (typeof data == "string") {
+			outputToConsole(data)
+		    } else {
+			let log = "Measured"
+			if ('x' in data) {
+                            $("#x").val(data.x)
+                            log += " x=" + data.x
+                        }
+                        if ('y' in data) {
+                            $("#y").val(data.y)
+                            log += " y=" + data.y
+                        }
+                        if ('z' in data) {
+                            $("#z").val(data.z)
+                            log += " z=" + data.z
+                        }
+                    	outputToConsole(log + ".")
+		    }
                 }
             )
         })

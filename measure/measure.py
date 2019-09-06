@@ -12,22 +12,23 @@ import sys
 import json
 
 measure = {}
+root = "measure/"
 
 # Load calibration parameters
 
 cD = {}
-with open("config", "rb") as config:
+with open(root + "config", "rb") as config:
     cD = pickle.load(config)
 
 if sys.argv[1] or sys.argv[2]:
 
     # Load new image, undistort & warp
-    img2 = cv2.imread("measure.jpg")
+    img2 = cv2.imread(root + "measure.jpg")
     img2 = cv2.undistort(img2, cD["mtx"], cD["dist"], None, cD["newcameramtx"])
-    print(cD)
+    cv2.imwrite(root + "undistorted.jpg", img2)
     img2 = img2[cD["y"]:cD["y"]+cD["h"], cD["x"]:cD["x"]+cD["w"]]
     img2 = cv2.warpPerspective(img2, cD["h2"], (int(cD["yD"]), int(cD["xD"])))
-    cv2.imwrite('perspective.jpg', img2)
+    cv2.imwrite(root + 'perspective.jpg', img2)
 
     # "anti-checkerboard" filter
 
@@ -60,7 +61,7 @@ if sys.argv[1] or sys.argv[2]:
             edges = cv2.Canny(h, lowerBound, upperBound)
             kernel_size = 3
             edges = cv2.GaussianBlur(edges, (kernel_size, kernel_size), 0)
-            #cv2.imwrite('canny-' + str(lowerBound) + '-' +
+            #cv2.imwrite(root + 'canny-' + str(lowerBound) + '-' +
             #             str(upperBound) + '.jpg', edges)
             lines = cv2.HoughLinesP(edges, 1, np.pi/180, threshold,
                                     minLineLength=cD["TILE_SIZE"] * (cD["ZOOM"] + 2), maxLineGap=200)
@@ -84,7 +85,7 @@ if sys.argv[1] or sys.argv[2]:
     cv2.putText(img2, str(w) + " x " + str(h) + "mm",
                 (int(rect[0][0]), int(rect[0][1])), cv2.FONT_HERSHEY_SIMPLEX, 1, (100, 255, 100), 2)
 
-    cv2.imwrite('contours.jpg', img2)
+    cv2.imwrite(root + 'contours.jpg', img2)
     if sys.argv[1]:
         measure["x"] = w
     if sys.argv[2]:
