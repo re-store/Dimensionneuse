@@ -103,10 +103,15 @@
             </tbody>
         </table>
     </div>
+
+    <div class="card">
+        <button onclick="download()"><i class="material-icons">save</i> DOWNLOAD</button>
+    </div>
 </body>
 
 <script>
     var hidden = false
+    var results = []
 
     populateSelectWithJSON("location", "config/locations.json");
     populateSelectWithJSON("volume", "config/volumes.json");
@@ -177,6 +182,7 @@
                     $("#errorLog").hide()
                     if (!hidden)
                         hide()
+                    results = data.rows
 
                     let nb = 0
                     data.rows.forEach(elem => {
@@ -234,6 +240,32 @@
                 }
             )
         }
+    }
+
+    function download() {
+        let csv = ""
+        for (let i = -1; i < results.length; i++) {
+            let line = ""
+            for (property in results[0]) {
+                if (i >= 0) {
+                    line += results[i][property] + ","
+                } else {
+                    line += property + ","
+                }
+            }
+            csv += line.slice(0, -1) + "\n"
+        }
+
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv));
+        element.setAttribute('download', 'db.csv');
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
     }
 
 </script>
