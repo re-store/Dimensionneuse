@@ -176,6 +176,27 @@ module.exports = {
                 .then(res => resolve(res))
                 .catch(e => reject("Delete failed! (" + e + ")"))
         })
+    },
+
+    fetchAvailable: function() {
+        return new Promise((resolve, reject) => {
+            pool
+                .query(`SELECT * FROM ${tableName} WHERE alive = true`)
+                .then(res => resolve(res))
+                .catch(e => reject("SQL query failed! (" + e + ")"))
+        })
+    },
+
+    reserve: function(items) {
+        var conditions = []
+        items.split(",").forEach(elem => conditions.push(`id = '${elem}'`))
+	
+        return new Promise((resolve, reject) => {
+            pool
+                .query(`UPDATE ${tableName} SET alive = false WHERE ${conditions.join(" OR ")}`)
+                .then(res => resolve("Items reserved."))
+                .catch(e => reject("SQL query failed! (" + e + ")"))
+        })
     }
 
 }
