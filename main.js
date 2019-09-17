@@ -66,18 +66,18 @@ app.get('/fetch', function (req, res) {
 app.get('/fetchAvailable', function (req, res) {
     database.fetchAvailable()
         .then(value => {
-		let csv = ""
-		        for (let i = -1; i < value.rows.length; i++) {
-		            let line = ""
-		            for (property in value.rows[0]) {
-		                if (i >= 0) {
-		                    line += value.rows[i][property] + ","
-		                } else {
-		                    line += property + ","
-		                }
-		            }
-		            csv += line.slice(0, -1) + ";"
-        	}
+            let csv = ""
+            for (let i = -1; i < value.rows.length; i++) {
+                let line = ""
+                for (property in value.rows[0]) {
+                    if (i >= 0) {
+                        line += value.rows[i][property] + ","
+                    } else {
+                        line += property + ","
+                    }
+                }
+                csv += line.slice(0, -1) + ";"
+            }
             res.send(csv.slice(0, -1))
         })
         .catch(value => {

@@ -69,21 +69,6 @@ pts_dest = [[0.0, 0.0],
 
 h2, status = cv2.findHomography(np.array(pts_src), np.array(pts_dest))
 
-# Z sensor calibration
-
-import board
-import busio
-import adafruit_vl53l0x
-import time
-from math import sqrt
-
-i2c = busio.I2C(board.SCL, board.SDA)
-sensor = adafruit_vl53l0x.VL53L0X(i2c)
-
-sensor.measurement_timing_budget = 1000000
-
-zCalib = sensor.range
-
 # Save these parameters
 
 configDictionary = {"TILE_SIZE": TILE_SIZE,
@@ -97,8 +82,7 @@ configDictionary = {"TILE_SIZE": TILE_SIZE,
                     "x": x,
                     "w": w,
                     "xD": xD,
-                    "yD": yD,
-		    "zCalib": zCalib}
+                    "yD": yD}
 
 with open("measure/config", "wb") as config:
     pickle.dump(configDictionary, config)

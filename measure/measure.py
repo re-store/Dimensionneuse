@@ -91,20 +91,5 @@ if sys.argv[1] or sys.argv[2]:
     if sys.argv[2]:
         measure["y"] = h
 
-if sys.argv[3]:
-    # Z sensor calibration
-
-    import board
-    import busio
-    import adafruit_vl53l0x
-    import time
-    from math import sqrt
-
-    i2c = busio.I2C(board.SCL, board.SDA)
-    sensor = adafruit_vl53l0x.VL53L0X(i2c)
-
-    sensor.measurement_timing_budget = 1000000
-    measure["z"] = sensor.range
-
 print(json.dumps(measure))
 sys.stdout.flush()

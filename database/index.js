@@ -36,7 +36,7 @@ module.exports = {
                 // Parameters are valid
                 plankID(measure, precision, material, volume, location) // 1st promise : get plank ID
                     .then(id => {
-    
+
                         const query2 = {
                             text: `INSERT INTO ${tableName}(id, x, y, z, px, py, pz, material, volume, location) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
                             values: [id,
@@ -44,7 +44,7 @@ module.exports = {
                                 Number(precision[0]), Number(precision[1]), Number(precision[2]),
                                 material, volume, location]
                         }
-    
+
                         pool
                             .query(query2) // 2nd promise : INSERT query
                             .then(res => resolve("Upload successful, ID " + id))
@@ -155,7 +155,7 @@ module.exports = {
      * @param {Boolean} alive New availability
      * @returns {Promise} Operation promise.
      */
-    edit: function(id, alive) {
+    edit: function (id, alive) {
         return new Promise((resolve, reject) => {
             pool
                 .query(`UPDATE ${tableName} SET alive = ${alive} WHERE id = '${id}'`)
@@ -169,7 +169,7 @@ module.exports = {
      * 
      * @param {String} id 
      */
-    del: function(id) {
+    del: function (id) {
         return new Promise((resolve, reject) => {
             pool
                 .query(`DELETE FROM ${tableName} WHERE id = '${id}'`)
@@ -178,7 +178,7 @@ module.exports = {
         })
     },
 
-    fetchAvailable: function() {
+    fetchAvailable: function () {
         return new Promise((resolve, reject) => {
             pool
                 .query(`SELECT * FROM ${tableName} WHERE alive = true`)
@@ -187,10 +187,10 @@ module.exports = {
         })
     },
 
-    reserve: function(items) {
+    reserve: function (items) {
         var conditions = []
         items.split(",").forEach(elem => conditions.push(`id = '${elem}'`))
-	
+
         return new Promise((resolve, reject) => {
             pool
                 .query(`UPDATE ${tableName} SET alive = false WHERE ${conditions.join(" OR ")}`)
