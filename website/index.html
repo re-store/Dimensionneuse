@@ -42,8 +42,14 @@
 
                 <!-- Calibrate button -->
                 <div>
-                    <button id="calibrate" type="button"><i class="material-icons">settings</i>
-                        CALIBRATE</button>
+                    <button id="calibrate" type="button">
+                        <i class="material-icons">settings</i>
+                        CALIBRATE X & Y</button>
+                </div>
+                <div>
+                    <button id="calibrateZ" type="button">
+                        <i class="material-icons">settings</i>
+                        CALIBRATE Z</button>
                 </div>
 
                 <!-- Measure and precision input -->
@@ -54,11 +60,18 @@
                 <div>Z: <input type="number" class="inputMeasure" name="z" id="z"> ± <input type="number"
                         class="inputPrecision" name="pz" id="pz" value="1"> mm</div>
                 <input type="submit" hidden>
-                <div> (measure X <input type="checkbox" name="cx" id="cx" checked>, Y <input type="checkbox" name="cy"
+                <div hidden> (measure X <input type="checkbox" name="cx" id="cx" checked>, Y <input type="checkbox" name="cy"
                         id="cy" checked>,
                     Z <input type="checkbox" name="cz" id="cz" checked>)</div>
-                <div><button id="measure" type="button"><i class="material-icons">search</i>
-                        MEASURE</button>
+                <div>
+                    <button id="measure" type="button">
+                        <i class="material-icons">search</i>
+                        MEASURE X & Y</button>
+                </div>
+                <div>
+                    <button id="measureZ" type="button">
+                        <i class="material-icons">search</i>
+                        MEASURE Z</button>
                 </div>
 
                 <div class="separator"></div>
@@ -92,7 +105,7 @@
 
     $(function () {
         $("#calibrate").click(function () {
-	    outputToConsole("Calibrating...")
+            outputToConsole("Calibrating...")
             $.post(
                 "calibrate",
                 {},
@@ -102,20 +115,28 @@
             )
         })
 
+        $("#calibrateZ").click(function () {
+            outputToConsole("Calibrating...")
+            $.post(
+                "calibrateZ",
+                {},
+                function (data) {
+                    outputToConsole(data)
+                }
+            )
+        })
+
         $("#measure").click(function () {
-	    outputToConsole("Measuring...")
+            outputToConsole("Measuring...")
             $.get(
                 "measure",
                 { x: $("#cx").is(":checked"), y: $("#cy").is(":checked"), z: $("#cz").is(":checked") },
                 function (data) {
-                    
-                    console.log(typeof data)
-
-		    if (typeof data == "string") {
-			outputToConsole(data)
-		    } else {
-			let log = "Measured"
-			if ('x' in data) {
+                    if (typeof data == "string") {
+                        outputToConsole(data)
+                    } else {
+                        let log = "Measured"
+                        if ('x' in data) {
                             $("#x").val(data.x)
                             log += " x=" + data.x
                         }
@@ -123,12 +144,27 @@
                             $("#y").val(data.y)
                             log += " y=" + data.y
                         }
+                        outputToConsole(log + ".")
+                    }
+                }
+            )
+        })
+        $("#measureZ").click(function () {
+            outputToConsole("Measuring...")
+            $.get(
+                "measureZ",
+                { x: $("#cx").is(":checked"), y: $("#cy").is(":checked"), z: $("#cz").is(":checked") },
+                function (data) {
+                    if (typeof data == "string") {
+                        outputToConsole(data)
+                    } else {
+                        let log = "Measured"
                         if ('z' in data) {
                             $("#z").val(data.z)
                             log += " z=" + data.z
                         }
-                    	outputToConsole(log + ".")
-		    }
+                        outputToConsole(log + ".")
+                    }
                 }
             )
         })

@@ -36,6 +36,19 @@ module.exports = {
                 })
         })
     },
+    calibrateZ: function () {
+        return new Promise((resolve, reject) => {
+            const pyprog = spawn('python3', ['./measure/calibrationZ.py']);
+
+            pyprog.stdout.on('data', function (data) {
+                resolve(data);
+            });
+
+            pyprog.stderr.on('data', (data) => {
+                reject(data);
+            });
+        })
+    },
 
     /**
      * Measure a plank and returns its size.
@@ -69,6 +82,20 @@ module.exports = {
                 .catch((error) => {
                     reject("Couldn't take a photo.")
                 })
+        })
+    },
+    measureZ: function (x, y, z) {
+        return new Promise((resolve, reject) => {
+            const pyprog = spawn('python3', ['./measure/measureZ.py', x, y, z])
+
+            pyprog.stdout.on('data', function (data) {
+                var jsonMeasure = JSON.parse(data)
+                resolve(jsonMeasure)
+            })
+
+            pyprog.stderr.on('data', (data) => {
+                reject(data)
+            })
         })
     }
 }

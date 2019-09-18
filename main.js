@@ -27,9 +27,27 @@ app.get('/measure', function (req, res) {
             res.send(value)
         })
 })
+app.get('/measureZ', function (req, res) {
+    measure.measureZ(req.query.x, req.query.y, req.query.z)
+        .then(value => {
+            res.send(value)
+        })
+        .catch(value => {
+            res.send(value)
+        })
+})
 
 app.post('/calibrate', (_req, res) => {
     measure.calibrate()
+        .then(value => {
+            res.send(value)
+        })
+        .catch(value => {
+            res.send(value)
+        })
+})
+app.post('/calibrateZ', (_req, res) => {
+    measure.calibrateZ()
         .then(value => {
             res.send(value)
         })
