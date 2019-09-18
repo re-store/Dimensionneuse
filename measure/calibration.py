@@ -12,10 +12,11 @@ CHK_SIZE = [15, 10] # Inner corners of the checkerboard
 TILE_SIZE = 50      # Size of a square in mm
 ZOOM = 2            # Number of px per mm after the homography
 RESIZE_RATIO = 0.3  # Downsampling ratio (checkerboard detection)
+root = "measure/"
 
 # Load the image and create a smaller grayscale version
 
-img = cv2.imread("measure/calib.jpg")
+img = cv2.imread(root + "calib.jpg")
 small_img = cv2.resize(img,
                        (0, 0),  # set fx and fy, not the final size
                        fx=RESIZE_RATIO,
@@ -30,7 +31,7 @@ corners2 = util.findCheckerboard(gray, CHK_SIZE) / RESIZE_RATIO
 img3 = img.copy()
 
 cv2.drawChessboardCorners(img3, (CHK_SIZE[1], CHK_SIZE[0]), corners2, True)
-cv2.imwrite('measure/grid.jpg', img3)
+cv2.imwrite(root + 'grid.jpg', img3)
 
 # Find undistortion parameters
 
@@ -41,6 +42,7 @@ objpoints = []
 objpoints.append(objp)
 imgpoints = []
 imgpoints.append(np.array(corners2))
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(
     objpoints, imgpoints, gray.shape[::-1], None, None)
 
@@ -84,7 +86,7 @@ configDictionary = {"TILE_SIZE": TILE_SIZE,
                     "xD": xD,
                     "yD": yD}
 
-with open("measure/config", "wb") as config:
+with open(root + "config", "wb") as config:
     pickle.dump(configDictionary, config)
     print("Calibrated.")
     sys.stdout.flush()
