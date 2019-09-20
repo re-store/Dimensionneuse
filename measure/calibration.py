@@ -8,10 +8,12 @@ import sys
 
 # Parameters
 
-CHK_SIZE = [15, 10] # Inner corners of the checkerboard
-TILE_SIZE = 50      # Size of a square in mm
+CHK_SIZE = [22, 7]  # Inner corners of the checkerboard
+TILE_SIZE = 100     # Size of a square in mm
 ZOOM = 2            # Number of px per mm after the homography
 RESIZE_RATIO = 0.3  # Downsampling ratio (checkerboard detection)
+CHK_DIFF = 80       # Checkerboard erasing sensivity
+debug = False
 root = "measure/"
 
 # Load the image and create a smaller grayscale version
@@ -31,7 +33,8 @@ corners2 = util.findCheckerboard(gray, CHK_SIZE) / RESIZE_RATIO
 img3 = img.copy()
 
 cv2.drawChessboardCorners(img3, (CHK_SIZE[1], CHK_SIZE[0]), corners2, True)
-cv2.imwrite(root + 'grid.jpg', img3)
+if debug:
+    cv2.imwrite(root + 'grid.jpg', img3)
 
 # Find undistortion parameters
 
@@ -79,12 +82,10 @@ configDictionary = {"TILE_SIZE": TILE_SIZE,
                     "dist": dist,
                     "newcameramtx": newcameramtx,
                     "h2": h2,
-                    "y": y,
-                    "h": h,
-                    "x": x,
-                    "w": w,
                     "xD": xD,
-                    "yD": yD}
+                    "yD": yD,
+                    "CHK_DIFF": CHK_DIFF,
+                    "debug": debug}
 
 with open(root + "config", "wb") as config:
     pickle.dump(configDictionary, config)
